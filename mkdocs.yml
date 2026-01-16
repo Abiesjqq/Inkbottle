@@ -2,6 +2,7 @@ site_name: Abies' Inkbottle
 site_url: https://Abies_Inkbottle
 theme:
   name: material
+  language: zh
   palette: 
     primary: deep purple
     accent: indigo
