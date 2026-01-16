@@ -1,0 +1,19 @@
+site_name: Abies' Inkbottle
+site_url: https://Abies_Inkbottle
+theme:
+  name: material
+  palette: 
+    primary: deep purple
+    accent: indigo
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: default
+      toggle: 
+        icon: material/weather-sunny
+    - media: "(prefers-color-scheme: light)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
