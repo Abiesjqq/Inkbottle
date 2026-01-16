@@ -2,19 +2,19 @@ site_name: Abies' Inkbottle
 site_url: https://Abies_Inkbottle
 theme:
   name: material
+  
   language: zh
-  palette: 
-    primary: deep purple
-    accent: indigo
-
-    - media: "(prefers-color-scheme: dark)"
-      scheme: default
-      toggle: 
-        icon: material/weather-sunny
+  
+  palette:
     - media: "(prefers-color-scheme: light)"
-      scheme: slate
+      scheme: default
+      primary: deep purple
+      accent: indigo
       toggle:
         icon: material/weather-night
-    - media: "(prefers-color-scheme)"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: indigo
       toggle:
-        icon: material/brightness-auto
+        icon: material/weather-sunny
