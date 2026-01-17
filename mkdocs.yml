@@ -3,7 +3,10 @@ site_url: https://Abies_Inkbottle
 theme:
   name: material
   
-  language: zh
+  language: en
+
+  icon:
+    logo: fontawesome/solid/feather
   
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -18,3 +21,14 @@ theme:
       accent: indigo
       toggle:
         icon: material/weather-sunny
+
+  features:
+    - header.autohide
+    - navigation.tabs
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.select
+
+extra_css:
+  - stylesheets/nav-toc-hover.css

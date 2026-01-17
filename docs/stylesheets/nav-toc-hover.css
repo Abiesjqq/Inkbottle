@@ -1,0 +1,40 @@
+.md-sidebar.md-sidebar--primary .md-sidebar__inner {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition-delay: 0.8s;
+    will-change: opacity, transform;
+    pointer-events: none;
+}
+
+.md-sidebar.md-sidebar--primary:hover .md-sidebar__inner {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0s;
+    pointer-events: auto;
+}
+
+.md-sidebar.md-sidebar--secondary .md-sidebar__inner {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    transition-delay: 0.4s;
+    will-change: opacity, transform;
+    pointer-events: none;
+}
+
+.md-sidebar.md-sidebar--secondary:hover .md-sidebar__inner {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0s;
+    pointer-events: auto;
+}
+
+.md-sidebar.md-sidebar--primary:not(:hover) .md-sidebar__inner,
+.md-sidebar.md-sidebar--secondary:not(:hover) .md-sidebar__inner {
+    transition-delay: 0.8s;
+}
+
+.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap {
+    overflow-x: hidden;
+}
