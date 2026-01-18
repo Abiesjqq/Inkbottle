@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if not page.is_homepage %}
+  <div class="page-hero">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__flower" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">{{ page.title }}</h1>
+    </div>
+  </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

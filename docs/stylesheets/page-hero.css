@@ -1,0 +1,92 @@
+/* Hero image + title for non-home pages */
+.page-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  color: #fff;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: calc(var(--hero-gap, 0px) * -1);
+  overflow: visible;
+}
+
+/* Remove the default top spacing so the hero hugs the header */
+body:not(.md-home) .md-main__inner,
+body:not(.md-home) .md-content {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+body:not(.md-home) .md-content {
+  margin-top: -20px;
+}
+
+.page-hero__bg {
+  --hero-bg-clip: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 90%;
+  background: url("../assets/hero_background.png") center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  transform: translateY(var(--hero-bg-offset, 0px));
+  will-change: transform;
+  clip-path: inset(0 0 calc(100% - var(--hero-bg-clip)) 0);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-hero__flower {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  height: 100%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 95%,
+      var(--md-default-bg-color) 100%
+    ),
+    url("../assets/hero_flower.png") center bottom / 100% auto no-repeat;
+  transform: translateY(var(--hero-flower-offset, 0px));
+  will-change: transform;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.page-hero__inner {
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.page-hero__title {
+  margin: 0;
+  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  font-weight: 700;
+  color: #000 !important;
+}
+
+/* Hide the default H1 to avoid duplicate title */
+.md-content__inner > h1:first-child {
+  display: none;
+}

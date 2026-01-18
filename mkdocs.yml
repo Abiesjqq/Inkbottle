@@ -4,6 +4,7 @@ theme:
   name: material
   
   language: en
+  custom_dir: docs/overrides
 
   icon:
     logo: fontawesome/solid/feather
@@ -32,3 +33,7 @@ theme:
 
 extra_css:
   - stylesheets/nav-toc-hover.css
+  - stylesheets/page-hero.css
+
+extra_javascript:
+  - javascripts/hero-parallax.js
