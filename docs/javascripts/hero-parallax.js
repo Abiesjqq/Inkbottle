@@ -6,7 +6,7 @@
   if (!bg || !flower) return;
 
   const bgSpeed = 0;
-  const flowerSpeed = -0.6;
+  const flowerSpeed = -1.2;
   let ticking = false;
 
   const update = () => {
