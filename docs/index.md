@@ -31,13 +31,12 @@ hide:
     <div class="flip-glow-ultimate">
       <div class="flip-glow-ultimate-glow"></div>
       <div class="flip-glow-ultimate-imgs">
-        <img src="./assets/avatar_github.png" alt="Back Image" class="flip-glow-ultimate-front" loading="eager" fetchpriority="high" width="190" height="190">
-        <img src="./assets/avatar_purple.jpg" alt="Front Image" class="flip-glow-ultimate-back" loading="lazy" width="190" height="190">
+        <img src="./assets/images/avatar_github.png" alt="Back Image" class="flip-glow-ultimate-front" loading="eager" fetchpriority="high" width="190" height="190">
+        <img src="./assets/images/avatar_purple.jpg" alt="Front Image" class="flip-glow-ultimate-back" loading="lazy" width="190" height="190">
       </div>
     </div>
   </div>
 </div>
-
 
 <style>
 /* 仅首页：禁用左右悬停显示的 nav/toc */
@@ -56,8 +55,35 @@ hide:
 <!-- 打字机效果脚本 -->
 <script>
   window.TYPEWRITER_PHRASES = [
-    "Ah… you’ve stepped inside. The ink clings to your soul like a second breath. It seeps into the quiet places you never guarded, stains them gently, patiently. Be still. Some stories prefer to be touched, not chased."
+    "Ah… you’ve stepped into the inkbottle! The ink clings to your soul, seeping into the quietest corners. Be still. Some stories prefer to be touched, not chased."
   ];
 </script>
 
----
+<br>
+
+
+<link rel="stylesheet" href="/stylesheets/card_base.css" />
+<link rel="stylesheet" href="/stylesheets/cards.css" />
+
+<style>
+  .card-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .card-slot .cards {
+    width: clamp(180px, 24vw, 260px);
+  }
+</style>
+
+<div class="card-row">
+  <div class="card-slot" data-name="Writeups" data-img="/assets/card_images/writeups.png"></div>
+  <div class="card-slot" data-name="RISC-V" data-img="/assets/card_images/riscv.png"></div>
+  <div class="card-slot" data-name="QR Code" data-img="/assets/card_images/qrcode.png"></div>
+</div>
+
+<script src="/javascripts/card_tilt.js" defer></script>

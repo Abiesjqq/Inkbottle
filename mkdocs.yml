@@ -48,7 +48,9 @@ extra_css:
   - stylesheets/typewriter.css
   - stylesheets/avatar.css
   - stylesheets/homepage.css
+  - stylesheets/card_base.css
 
 extra_javascript:
   - javascripts/hero-parallax.js
   - javascripts/typewriter.js
+  - javascripts/card_tilt.js
