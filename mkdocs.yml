@@ -1,7 +1,7 @@
 site_name: Abies' Inkbottle
 site_url: https://Abies_Inkbottle
 nav:
-  - Index: index/index.md
+  - Index: index.md
   - dir1:
     - test10: dir1/test10.md
     - text11: dir1/text11.md
