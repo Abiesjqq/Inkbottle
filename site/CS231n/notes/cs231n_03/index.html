@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://Abies_Inkbottle/CS231n/notes/cs231n_03/">
       
       
+        <link rel="prev" href="../cs231n_02/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../cs231n_04/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Abies' Inkbottle</title>
+        <title>Lec2 Loss Functions and Optimization - Abies' Inkbottle</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,25 +48,25 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/nav-toc-hover.css">
+      <link rel="stylesheet" href="../../../stylesheets/nav-toc-hover.css">
     
-      <link rel="stylesheet" href="/stylesheets/page-hero.css">
+      <link rel="stylesheet" href="../../../stylesheets/page-hero.css">
     
-      <link rel="stylesheet" href="/stylesheets/frosted-header.css">
+      <link rel="stylesheet" href="../../../stylesheets/frosted-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/colored-header.css">
+      <link rel="stylesheet" href="../../../stylesheets/colored-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/typewriter.css">
+      <link rel="stylesheet" href="../../../stylesheets/typewriter.css">
     
-      <link rel="stylesheet" href="/stylesheets/avatar.css">
+      <link rel="stylesheet" href="../../../stylesheets/avatar.css">
     
-      <link rel="stylesheet" href="/stylesheets/homepage.css">
+      <link rel="stylesheet" href="../../../stylesheets/homepage.css">
     
-      <link rel="stylesheet" href="/stylesheets/card_base.css">
+      <link rel="stylesheet" href="../../../stylesheets/card_base.css">
     
-      <link rel="stylesheet" href="/stylesheets/admonitions.css">
+      <link rel="stylesheet" href="../../../stylesheets/admonitions.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,6 +91,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#loss-function-svm-loss" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +106,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../../.." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -115,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Lec2 Loss Functions and Optimization
             
           </span>
         </div>
@@ -216,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -233,11 +244,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/CS231n/notes/cs231n_02/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../cs231n_02/" class="md-tabs__link">
           
   
   
@@ -257,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
+        <a href="../../../GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
           
   
   
@@ -291,7 +304,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../../.." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -309,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -328,24 +341,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -358,7 +376,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             CS231n
@@ -372,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_02/" class="md-nav__link">
+      <a href="../cs231n_02/" class="md-nav__link">
         
   
   
@@ -392,10 +410,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_03/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lec2 Loss Functions and Optimization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -406,6 +444,60 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loss-function-svm-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loss Function: SVM Loss
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loss-function-softmax-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loss Function: Softmax Loss
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-w-via-gradient-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding W via Gradient Descent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-extraction-for-image-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Extraction for Image Matching
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -418,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_04/" class="md-nav__link">
+      <a href="../cs231n_04/" class="md-nav__link">
         
   
   
@@ -441,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_05/" class="md-nav__link">
+      <a href="../cs231n_05/" class="md-nav__link">
         
   
   
@@ -464,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_06/" class="md-nav__link">
+      <a href="../cs231n_06/" class="md-nav__link">
         
   
   
@@ -487,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_07/" class="md-nav__link">
+      <a href="../cs231n_07/" class="md-nav__link">
         
   
   
@@ -551,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/assignments/a1_knn/" class="md-nav__link">
+      <a href="../../assignments/a1_knn/" class="md-nav__link">
         
   
   
@@ -630,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
         
   
   
@@ -653,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
         
   
   
@@ -676,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
         
   
   
@@ -699,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
         
   
   
@@ -722,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
         
   
   
@@ -745,7 +837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
         
   
   
@@ -768,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
         
   
   
@@ -791,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
         
   
   
@@ -814,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
         
   
   
@@ -837,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
         
   
   
@@ -860,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
         
   
   
@@ -883,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
         
   
   
@@ -906,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
         
   
   
@@ -929,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
         
   
   
@@ -952,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
         
   
   
@@ -975,7 +1067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
         
   
   
@@ -998,7 +1090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
         
   
   
@@ -1021,7 +1113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
         
   
   
@@ -1044,7 +1136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
         
   
   
@@ -1085,6 +1177,50 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loss-function-svm-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loss Function: SVM Loss
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loss-function-softmax-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loss Function: Softmax Loss
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-w-via-gradient-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding W via Gradient Descent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#feature-extraction-for-image-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Extraction for Image Matching
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1095,7 +1231,78 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+  
+  <div class="page-hero">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__flower" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">Lec2 Loss Functions and Optimization</h1>
+    </div>
+  </div>
+  
+  
+                  
+
+
+
+  <h1>Lec2 Loss Functions and Optimization</h1>
+
+<h2 id="loss-function-svm-loss">Loss Function: SVM Loss</h2>
+<p>For the N training samples <span class="arithmatex">\((x_i, y_i)\)</span>, define the per-sample loss <span class="arithmatex">\(L_i\)</span> and the total loss as the average</p>
+<div class="arithmatex">\[L = \frac{1}{N} \sum_i L_i(f(x_i, W), y_i)\]</div>
+<p>Our goal is to minimize this L.</p>
+<p><strong>SVM loss:</strong> each class gets a score. The correct class score should be higher than all others by at least a margin; outside the margin the loss is zero, inside the margin the loss grows with the violation.</p>
+<p>E.g., with a margin of 1 (<span class="arithmatex">\(s\)</span> denotes the vector of scores):</p>
+<div class="arithmatex">\[L_i = \displaystyle \sum_{j \neq y_i} \begin{cases} 0, &amp; s_{y_i} \ge s_j + 1 \\ s_j - s_{y_i} + 1, &amp; \text{otherwise} \end{cases}\]</div>
+<p>Early in training， scores are near 0, so loss is roughly <code>(#classes - 1)</code>. The minimum loss is 0; if a <span class="arithmatex">\(W\)</span> achieves zero loss then any scaled version like <span class="arithmatex">\(2W\)</span> also does.</p>
+<p>We do not only care about fitting training labels; we want good test performance. A model that fits train data too aggressively may generalize poorly. Therefore we add a <strong>regularization term</strong> <span class="arithmatex">\(\lambda R(W)\)</span> to the loss to trade off margin against model simplicity so that <span class="arithmatex">\(W\)</span> does not become arbitrarily complex.</p>
+<p>Common regularizers:</p>
+<ul>
+<li>L2: <span class="arithmatex">\(R(W) = \sum_k \sum_l W_{k,l}^2\)</span></li>
+<li>L1: <span class="arithmatex">\(R(W) = \sum_k \sum_l |W_{k,l}|\)</span></li>
+<li>Elastic net (L1 + L2): <span class="arithmatex">\(R(W) = \sum_k \sum_l \left(\beta W_{k,l}^2 + |W_{k,l}|\right)\)</span></li>
+</ul>
+<h2 id="loss-function-softmax-loss">Loss Function: Softmax Loss</h2>
+<p>This is the loss for the Softmax classifier (multinomial logistic regression). In SVM we only enforce that the correct class out-scores others by a margin. In Softmax, scores are mapped to class probabilities.  </p>
+<p>Definition of probability:</p>
+<div class="arithmatex">\[P(Y = k \mid X = x_i) = \frac{e^{s_k}}{\sum_j e^{s_j}}\]</div>
+<p>Where <span class="arithmatex">\(s = f(x_i; W)\)</span> and exponentiation makes every entry positive.<br />
+We want the probability of the correct class to be high; the loss is the negative log-likelihood:</p>
+<div class="arithmatex">\[L_i = -\log P(Y = y_i \mid X = x_i)\]</div>
+<p>Exponentiated scores define a distribution; minimizing the loss maximizes the probability of the correct class.</p>
+<p>SVM loss only pushes the correct score above others by the margin; Softmax loss not only wants it higher but as high as possible.<br />
+In practice, Softmax often works better.</p>
+<h2 id="finding-w-via-gradient-descent">Finding W via Gradient Descent</h2>
+<p>Different <span class="arithmatex">\(W\)</span> give different loss; optimization searches for <span class="arithmatex">\(W\)</span> that minimizes loss.</p>
+<p>Gradient of <span class="arithmatex">\(f\)</span>: <span class="arithmatex">\(\nabla f = \left(\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}\right)\)</span>.<br />
+Gradient descent moves against the gradient of the loss with respect to <span class="arithmatex">\(W\)</span> to approach a minimum.<br />
+To get the gradient numerically, add a small <span class="arithmatex">\(h\)</span> to each element of <span class="arithmatex">\(W\)</span>, measure the change in loss, and approximate <span class="arithmatex">\(\mathrm{d}W\)</span>; this is numerical gradient checking. Writing the exact derivative formula is the analytic gradient.</p>
+<p>Gradient descent pseudocode:</p>
+<pre><code class="language-py">while True:
+    weights_grad = evaluate_gradient(loss_fun, data, weights)
+    weights += -step_size * weights_grad
+</code></pre>
+<p>Stochastic Gradient Descent (SGD): computing the full loss gradient can be expensive; when loss is an average we can approximate its gradient using only part of the data.</p>
+<div class="arithmatex">\[\nabla_W L(W) = \frac{1}{N} \sum_{i=1}^N \nabla_W L_i(x_i, y_i, W) + \lambda \nabla_W R(W)\]</div>
+<p>Vanilla minibatch gradient descent: instead of all data, randomly pick a small set (e.g., 256 samples) as a minibatch to estimate the gradient.</p>
+<h2 id="feature-extraction-for-image-matching">Feature Extraction for Image Matching</h2>
+<p>In practice, raw pixels vary a lot; we often extract features before matching.<br />
+If two images contain the same object but at different positions, a linear classifier on raw pixels fails because translation moves the pattern across the grid.<br />
+Better features include color histograms and Histogram of Oriented Gradients (HoG).<br />
+Another approach: sample patches to build a codebook (visual words); for a new image, encode patches by the nearest codebook words and pool those counts into features.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
               </article>
             </div>
@@ -1127,26 +1334,26 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
   
-      <script src="/assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="/javascripts/hero-parallax.js"></script>
+        <script src="../../../javascripts/hero-parallax.js"></script>
       
-        <script src="/javascripts/typewriter.js"></script>
+        <script src="../../../javascripts/typewriter.js"></script>
       
-        <script src="/javascripts/card_tilt.js"></script>
+        <script src="../../../javascripts/card_tilt.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
     
   <script>
     (function () {
-      var landing = "/landing.html";
+      var landing = "../../../landing.html";
       var logoLink = document.querySelector("a.md-logo, .md-header__button.md-logo");
       if (logoLink) {
         logoLink.setAttribute("href", landing);

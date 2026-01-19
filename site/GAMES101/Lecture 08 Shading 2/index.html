@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://Abies_Inkbottle/GAMES101/Lecture%2008%20Shading%202/">
       
       
+        <link rel="prev" href="../Lecture%2007%20Shading%201/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../Lecture%2009%20Shading%203/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Abies' Inkbottle</title>
+        <title>Lec8 Shading 2 (Shading, Pipeline and Texture Mapping) - Abies' Inkbottle</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,25 +48,25 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/nav-toc-hover.css">
+      <link rel="stylesheet" href="../../stylesheets/nav-toc-hover.css">
     
-      <link rel="stylesheet" href="/stylesheets/page-hero.css">
+      <link rel="stylesheet" href="../../stylesheets/page-hero.css">
     
-      <link rel="stylesheet" href="/stylesheets/frosted-header.css">
+      <link rel="stylesheet" href="../../stylesheets/frosted-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/colored-header.css">
+      <link rel="stylesheet" href="../../stylesheets/colored-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/typewriter.css">
+      <link rel="stylesheet" href="../../stylesheets/typewriter.css">
     
-      <link rel="stylesheet" href="/stylesheets/avatar.css">
+      <link rel="stylesheet" href="../../stylesheets/avatar.css">
     
-      <link rel="stylesheet" href="/stylesheets/homepage.css">
+      <link rel="stylesheet" href="../../stylesheets/homepage.css">
     
-      <link rel="stylesheet" href="/stylesheets/card_base.css">
+      <link rel="stylesheet" href="../../stylesheets/card_base.css">
     
-      <link rel="stylesheet" href="/stylesheets/admonitions.css">
+      <link rel="stylesheet" href="../../stylesheets/admonitions.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,6 +91,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#specular-term" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +106,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../.." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -115,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Lec8 Shading 2 (Shading, Pipeline and Texture Mapping)
             
           </span>
         </div>
@@ -216,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -237,7 +248,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/CS231n/notes/cs231n_02/" class="md-tabs__link">
+        <a href="../../CS231n/notes/cs231n_02/" class="md-tabs__link">
           
   
   
@@ -253,11 +264,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
           
   
   
@@ -291,7 +304,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../.." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -309,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -372,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_02/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_02/" class="md-nav__link">
         
   
   
@@ -395,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_03/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_03/" class="md-nav__link">
         
   
   
@@ -418,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_04/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_04/" class="md-nav__link">
         
   
   
@@ -441,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_05/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_05/" class="md-nav__link">
         
   
   
@@ -464,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_06/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_06/" class="md-nav__link">
         
   
   
@@ -487,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_07/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_07/" class="md-nav__link">
         
   
   
@@ -551,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/assignments/a1_knn/" class="md-nav__link">
+      <a href="../../CS231n/assignments/a1_knn/" class="md-nav__link">
         
   
   
@@ -586,24 +599,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -616,7 +634,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             GAMES101
@@ -630,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
+      <a href="../Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
         
   
   
@@ -653,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
+      <a href="../Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
         
   
   
@@ -676,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
+      <a href="../Lecture%2003%20Transformation/" class="md-nav__link">
         
   
   
@@ -699,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
+      <a href="../Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
         
   
   
@@ -722,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
+      <a href="../Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
         
   
   
@@ -745,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
+      <a href="../Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
         
   
   
@@ -768,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
+      <a href="../Lecture%2007%20Shading%201/" class="md-nav__link">
         
   
   
@@ -788,10 +806,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lec8 Shading 2 (Shading, Pipeline and Texture Mapping)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -802,6 +840,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specular-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specular Term
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambient-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambient Term
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shading-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shading Frequency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphics-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphics Pipeline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#texture-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture Mapping
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -814,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
+      <a href="../Lecture%2009%20Shading%203/" class="md-nav__link">
         
   
   
@@ -837,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
+      <a href="../Lecture%2010%20Geometry%201/" class="md-nav__link">
         
   
   
@@ -860,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
+      <a href="../Lecture%2011%20Geometry%202/" class="md-nav__link">
         
   
   
@@ -883,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
+      <a href="../Lecture%2012%20Geometry%203/" class="md-nav__link">
         
   
   
@@ -906,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
+      <a href="../Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
         
   
   
@@ -929,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
+      <a href="../Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
         
   
   
@@ -952,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
+      <a href="../Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
         
   
   
@@ -975,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
+      <a href="../Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
         
   
   
@@ -998,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
+      <a href="../Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
         
   
   
@@ -1021,7 +1122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
+      <a href="../Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
         
   
   
@@ -1044,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
+      <a href="../Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
         
   
   
@@ -1085,6 +1186,59 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specular-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specular Term
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ambient-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ambient Term
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shading-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shading Frequency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#graphics-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphics Pipeline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#texture-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Texture Mapping
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1095,7 +1249,91 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+  
+  <div class="page-hero">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__flower" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">Lec8 Shading 2 (Shading, Pipeline and Texture Mapping)</h1>
+    </div>
+  </div>
+  
+  
+                  
+
+
+
+  <h1>Lec8 Shading 2 (Shading, Pipeline and Texture Mapping)</h1>
+
+<h2 id="specular-term">Specular Term</h2>
+<p>什么时候能看到高光？</p>
+<ol>
+<li>物体光滑，反射集中在镜面反射</li>
+<li>视角与镜面反射方向接近</li>
+</ol>
+<p><strong>半程向量</strong>：光照方向和观察方向的角平分线，用于判断观察方向和镜面反射方向接近的程度</p>
+<p>为什么用半程向量而不是直接计算？</p>
+<p>半程向量只需要 v 和 l，计算简单</p>
+<div class="arithmatex">\[\mathbb{h}=bisector(\mathbb{v},\ mathbb{l})=\frac{\mathbb{v}+\mathbb{l}}{|| \mathbb{v}+\mathbb{l} ||}\]</div>
+<p>高光的 Bliinn-Phone 公式：</p>
+<div class="arithmatex">\[L_s=k_s(I/r^2)max(0, \mathbb{n}\cdot\mathbb{h})^P\]</div>
+<p>cosine power plots: increasing p narrows the reflection lobe</p>
+<p><img alt="cos power" src="../resources/cos%20power.png" />{style="width:500px"}</p>
+<p>Influence of k and p:</p>
+<p><img alt="kp" src="../resources/kp.png" />{style="width:500px"}</p>
+<h2 id="ambient-term">Ambient Term</h2>
+<p>环境光：认为环境光强度处处相同</p>
+<div class="arithmatex">\[L_a=k_aI_a\]</div>
+<p><span class="arithmatex">\(L_a\)</span>: reflected ambient lignt<br />
+<span class="arithmatex">\(k_a\)</span>: ambient coefficient<br />
+This is approximate / fake</p>
+<p>三项相加：</p>
+<div class="arithmatex">\[L=L_a+L_d+L_s\]</div>
+<p><img alt="Blinn-Phong" src="../resources/Blinn-Phong.png" />{style="width:500px"}</p>
+<h2 id="shading-frequency">Shading Frequency</h2>
+<ol>
+<li>确定 shading point 时，对一个平面进行相同操作</li>
+<li>对每个顶点计算法线并着色，中间的点用平滑插值</li>
+<li>对每个像素应用着色</li>
+<li>Flat shading: triangle face is flat (one normal vector) ,but is not good for smooth surfaces</li>
+<li>Gouraud shading: Interpolate colors from vertices across triangles, each vertex has a normal vector</li>
+<li>Phong shading: Interpolate colors from vertices across each triangle, compute full shading model at each pixel (Not the Blinn-Phong Reflectance Model)</li>
+</ol>
+<p>Shading frequency: face-&gt;vertex-&gt;pixel</p>
+<p><strong>顶点的法线怎么计算？</strong><br />
+周围所有三角形的法线的平均</p>
+<div class="arithmatex">\[N_v=\frac{\sum_iN_i}{||\sum_iN_i||}\]</div>
+<p>或者再根据三角形面积加权</p>
+<p><strong>像素法线怎么计算？</strong></p>
+<p>根据顶点法线和重心，计算各个点的法线，再归一化</p>
+<h2 id="graphics-pipeline">Graphics Pipeline</h2>
+<p>Graphics Pipeline (Real-time Rendering Pipeline)
+图形管线（实时渲染管线）</p>
+<p><strong>Shader(像素着色器)</strong>：计算每一个像素最后的颜色，并输出。可以指定每一个像素的着色</p>
+<p>GLSL</p>
+<h2 id="texture-mapping">Texture Mapping</h2>
+<p>在物体的不同位置定义不同的属性（吸收光不同，产生不同颜色）</p>
+<p>定义在物体表面：<br />
+Surface lives in 3D world space. Every 3D surface point alsohas a place where it goes in the 2D image.<br />
+即三维的物体表面可以与一张二维的图一一对应，这张二维的图就是纹理。</p>
+<p><strong>Parameterizarion（参数化）</strong>：将三维物体表面的所有三角形映射到二维，且三角形尽可能少扭曲（保持大小关系），且尽可能仍构成完整的图形。</p>
+<p>Texture can be used multiple times.<br />
+重复使用纹理：Tile</p>
+<p>已知三角形顶点坐标，怎么得到三角形内部某个点的坐标？<br />
+Barycentric Coordinates (下一讲)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
               </article>
             </div>
@@ -1127,26 +1365,26 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
   
-      <script src="/assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="/javascripts/hero-parallax.js"></script>
+        <script src="../../javascripts/hero-parallax.js"></script>
       
-        <script src="/javascripts/typewriter.js"></script>
+        <script src="../../javascripts/typewriter.js"></script>
       
-        <script src="/javascripts/card_tilt.js"></script>
+        <script src="../../javascripts/card_tilt.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
     
   <script>
     (function () {
-      var landing = "/landing.html";
+      var landing = "../../landing.html";
       var logoLink = document.querySelector("a.md-logo, .md-header__button.md-logo");
       if (logoLink) {
         logoLink.setAttribute("href", landing);

@@ -102,11 +102,6 @@
     padding-right: 210px;
 }
 
-/* A: 如果方块变红，说明是 label 本体背景/阴影 */
-/* .md-sidebar--primary label.md-nav__title[for^="__nav_"] {
-  background: rgba(255,0,0,.35) !important;
-  box-shadow: 0 0 0 9999px rgba(255,0,0,.00) !important;
-} */
 
 /* B: 如果方块变红，说明是 label 的伪元素画的 */
 /* .md-sidebar--primary label.md-nav__title[for^="__nav_"]::before,

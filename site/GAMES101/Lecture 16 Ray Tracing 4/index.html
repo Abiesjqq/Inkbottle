@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://Abies_Inkbottle/GAMES101/Lecture%2016%20Ray%20Tracing%204/">
       
       
+        <link rel="prev" href="../Lecture%2015%20Ray%20Tracing%203/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../Lecture%2017%20Materials%20and%20Appearances/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Abies' Inkbottle</title>
+        <title>Lec16 Ray Tracing 4(Monte Carlo Path Tracing) - Abies' Inkbottle</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,25 +48,25 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/nav-toc-hover.css">
+      <link rel="stylesheet" href="../../stylesheets/nav-toc-hover.css">
     
-      <link rel="stylesheet" href="/stylesheets/page-hero.css">
+      <link rel="stylesheet" href="../../stylesheets/page-hero.css">
     
-      <link rel="stylesheet" href="/stylesheets/frosted-header.css">
+      <link rel="stylesheet" href="../../stylesheets/frosted-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/colored-header.css">
+      <link rel="stylesheet" href="../../stylesheets/colored-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/typewriter.css">
+      <link rel="stylesheet" href="../../stylesheets/typewriter.css">
     
-      <link rel="stylesheet" href="/stylesheets/avatar.css">
+      <link rel="stylesheet" href="../../stylesheets/avatar.css">
     
-      <link rel="stylesheet" href="/stylesheets/homepage.css">
+      <link rel="stylesheet" href="../../stylesheets/homepage.css">
     
-      <link rel="stylesheet" href="/stylesheets/card_base.css">
+      <link rel="stylesheet" href="../../stylesheets/card_base.css">
     
-      <link rel="stylesheet" href="/stylesheets/admonitions.css">
+      <link rel="stylesheet" href="../../stylesheets/admonitions.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,6 +91,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#monte-carlo-integration" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +106,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../.." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -115,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Lec16 Ray Tracing 4(Monte Carlo Path Tracing)
             
           </span>
         </div>
@@ -216,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -237,7 +248,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/CS231n/notes/cs231n_02/" class="md-tabs__link">
+        <a href="../../CS231n/notes/cs231n_02/" class="md-tabs__link">
           
   
   
@@ -253,11 +264,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
           
   
   
@@ -291,7 +304,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../.." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -309,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -372,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_02/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_02/" class="md-nav__link">
         
   
   
@@ -395,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_03/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_03/" class="md-nav__link">
         
   
   
@@ -418,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_04/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_04/" class="md-nav__link">
         
   
   
@@ -441,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_05/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_05/" class="md-nav__link">
         
   
   
@@ -464,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_06/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_06/" class="md-nav__link">
         
   
   
@@ -487,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_07/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_07/" class="md-nav__link">
         
   
   
@@ -551,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/assignments/a1_knn/" class="md-nav__link">
+      <a href="../../CS231n/assignments/a1_knn/" class="md-nav__link">
         
   
   
@@ -586,24 +599,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -616,7 +634,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             GAMES101
@@ -630,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
+      <a href="../Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
         
   
   
@@ -653,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
+      <a href="../Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
         
   
   
@@ -676,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
+      <a href="../Lecture%2003%20Transformation/" class="md-nav__link">
         
   
   
@@ -699,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
+      <a href="../Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
         
   
   
@@ -722,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
+      <a href="../Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
         
   
   
@@ -745,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
+      <a href="../Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
         
   
   
@@ -768,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
+      <a href="../Lecture%2007%20Shading%201/" class="md-nav__link">
         
   
   
@@ -791,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
+      <a href="../Lecture%2008%20Shading%202/" class="md-nav__link">
         
   
   
@@ -814,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
+      <a href="../Lecture%2009%20Shading%203/" class="md-nav__link">
         
   
   
@@ -837,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
+      <a href="../Lecture%2010%20Geometry%201/" class="md-nav__link">
         
   
   
@@ -860,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
+      <a href="../Lecture%2011%20Geometry%202/" class="md-nav__link">
         
   
   
@@ -883,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
+      <a href="../Lecture%2012%20Geometry%203/" class="md-nav__link">
         
   
   
@@ -906,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
+      <a href="../Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
         
   
   
@@ -929,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
+      <a href="../Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
         
   
   
@@ -952,7 +970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
+      <a href="../Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
         
   
   
@@ -972,10 +990,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lec16 Ray Tracing 4(Monte Carlo Path Tracing)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -986,6 +1024,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#monte-carlo-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monte Carlo Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Tracing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ray-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ray Generation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -998,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
+      <a href="../Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
         
   
   
@@ -1021,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
+      <a href="../Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
         
   
   
@@ -1044,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
+      <a href="../Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
         
   
   
@@ -1085,6 +1168,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#monte-carlo-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monte Carlo Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#path-tracing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Path Tracing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ray-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ray Generation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1095,7 +1213,192 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+  
+  <div class="page-hero">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__flower" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">Lec16 Ray Tracing 4(Monte Carlo Path Tracing)</h1>
+    </div>
+  </div>
+  
+  
+                  
+
+
+
+  <h1>Lec16 Ray Tracing 4(Monte Carlo Path Tracing)</h1>
+
+<h2 id="monte-carlo-integration">Monte Carlo Integration</h2>
+<p><strong>Why:</strong> we want to solve an integral, but it can be too difficult to solve <span class="arithmatex">\(\int_a^b f(x)dx\)</span> analytically.</p>
+<p><strong>What &amp; how:</strong> estimate the integral of a function by averaging random samples of the function's value.</p>
+<p><strong>Monte Carlo estimator:</strong></p>
+<div class="arithmatex">\[X_i\sim p(x)\quad\int_a^b f(x)dx \]</div>
+<div class="arithmatex">\[\int f(x)dx=\frac{1}{N}\sum_{i=1}^N\frac{f(X_i)}{p(X_i)}\]</div>
+<ul>
+<li>The more samples, the less variance.</li>
+<li>Sample on X, integration on X.</li>
+</ul>
+<h2 id="path-tracing">Path Tracing</h2>
+<p><strong>Problems of Whitted-Style:</strong></p>
+<ul>
+<li>Glossy texure (Utah teapot)</li>
+<li>Color bleeding (Cornell box)</li>
+</ul>
+<p><strong>A simple example: direct illumination</strong></p>
+<div class="arithmatex">\[
+L_o(\mathrm{p},\omega_o)=\int_{\Omega^+}L_i(\mathrm{p},\omega_i)f_r(\mathrm{p},\omega_i,\omega_o)(n\cdot\omega_i)\mathrm{d}\omega_i
+\]</div>
+<ul>
+<li><span class="arithmatex">\(f(x)\)</span>: <span class="arithmatex">\(L_i(\mathrm{p},\omega_i)f_r(\mathrm{p},\omega_i,\omega_o)(n\cdot\omega_i)\)</span></li>
+<li><span class="arithmatex">\(pdf(\omega)\)</span>: <span class="arithmatex">\(1/2\pi\)</span></li>
+</ul>
+<p>Monte Carlo integration:</p>
+<div class="arithmatex">\[
+L_o(\mathrm{p},\omega_o)\approx\frac{1}{N}\sum_{i=1}^N\frac{L_i(\mathrm{p},\omega_i)f_r(\mathrm{p},\omega_i,\omega_o)(n\cdot\omega_i)}{pdf(\omega_i)}
+\]</div>
+<p>Code:</p>
+<pre><code>shade (p, wo)
+    Randomly choose N directions wi~pdf
+    Lo = 0.0
+    For each wi
+        Trace a ray r(p, wi)
+        If ray r hit the light
+            Lo += (1 / N) * L_i * f_r * cosine / pdf(wi)
+    Return Lo
+</code></pre>
+<p><strong>Introduce global illumination:</strong></p>
+<p>The light reflect from Q to P, equals to the direct illumination ar Q observed at P.</p>
+<pre><code>shade (p, wo)
+    Randomly choose N directions wi~pdf
+    Lo = 0.0
+    For each wi
+        Trace a ray r(p, wi)
+        If ray r hit the light
+            Lo += (1 / N) * L_i * f_r * cosine / pdf(wi)
+        Else If ray r hit an object at q
+            Lo += (1 / N) * shade(q, -wi) * f_r * cosine / pdf(wi)
+    Return Lo
+</code></pre>
+<p><strong>Problems 1:</strong> Explosion of rays as bounces go up<br />
+Rays will not explode iff N = 1.</p>
+<p>This is "path tracing".</p>
+<p>Code:</p>
+<pre><code>shade (p, wo)
+    Randomly choose ONE directions wi~pdf(w)
+    Lo = 0.0
+    For each wi
+        Trace a ray r(p, wi)
+        If ray r hit the light
+            Return L_i * f_r * cosine / pdf(wi)
+        Else If ray r hit an object at q
+            Return shade(q, -wi) * f_r * cosine / pdf(wi)
+</code></pre>
+<h2 id="ray-generation">Ray Generation</h2>
+<pre><code>ray_genaration(camPos, pixel)
+    Uniformly choose N sample positions within the pixel
+    pixel_radiance = 0.0
+    For each sample in the pixel
+        Shoot a ray t(camPos, cam_to_sample)
+        If ray r hit the scene at p
+            pixel_radiance += 1 / N * shade(p, sample_to_cam)
+    Return pixel_radiance
+</code></pre>
+<p><strong>Problem 1:</strong> The recursion won't stop.<br />
+<strong>Solution:</strong> Russian Roulette (RR)</p>
+<p>Suppose we manually set a probability P (0&lt;P&lt;1).<br />
+With probability P, shoot a ray and return the shading result divided by P is Lo / P.<br />
+With probability 1-P, don't shoot a ray adn you'll get 0.</p>
+<p>In this way, you can still expect to get Lo:<br />
+E = P _ (Lo / P) + (1 - P) _ 0 = Lo</p>
+<p>Code:</p>
+<pre><code>(Add)
+    Manually specify a probability P_RR
+    Randomly select ksi in a uniform dist. in [0, 1]
+    If (ksi &gt; P_RR) retunr 0.0
+
+    Return ... / P_RR
+</code></pre>
+<p><strong>Problem 2:</strong> Inefficient. When SPP (samplees per pixel) is low, get noisy results</p>
+<p>Only a few rays hit the light, so a lot of rays are "wasted".</p>
+<p><strong>Solution:</strong> sample on the light</p>
+<p>Assume pdf = 1 / A. But the rendering equation intefrates on the solid angle.</p>
+<p>To sample on the light and integrate on the light, need the relationship between <span class="arithmatex">\(d\omega\)</span> and <span class="arithmatex">\(dA\)</span>.</p>
+<p><img alt="sample the light" src="../resources/sample%20the%20light.png" />{style="width:400px"}</p>
+<div class="arithmatex">\[d\omega=\frac{dA\cos\theta'}{|| x'-x ||^2}\]</div>
+<p>Rewrite the rendering equation:</p>
+<div class="arithmatex">\[
+\begin{align*}
+L_o(\mathrm{p},\omega_o)&amp;=\int_{\Omega^+}L_i(\mathrm{p},\omega_i)f_r(\mathrm{p},\omega_i,\omega_o)\cos\theta\,\mathrm{d}\omega_i \\
+&amp;=\int_A L_i(\mathrm{p},\omega_i)f_r(\mathrm{p},\omega_i,\omega_o)\frac{\cos\theta\cos\theta'}{|| x'-x ||^2}\mathrm{d}A
+\end{align*}
+\]</div>
+<p>Code:</p>
+<pre><code>shade(p, wo)
+    # Contribution from the light source.
+    Uniformlu sanple the light at x' (pdf_light = 1 / A)
+    L_dir = L_i * f_r * cos theta * cos theta' / |x' - p|^2 / pdf_light
+
+    # Contribution from other reflectors
+    L_indir = 0.0
+    Test Russian Roulette with probability P_RR
+    Uniformly sample the hemisphere toward wi (pdf_hemi = 1 / 2pi)
+    Trace a ray r(p, wi)
+    If ray r hir a non-emitting object ar q
+        L_indir = shade(q, -wi) * f_r * cos theta / pdf_hemi / P_RR
+
+    Return L_dir + L_indir
+</code></pre>
+<p><strong>Final problem:</strong> need to test if the ray os not blocked in the middle.</p>
+<p>Hard to handle point light source.</p>
+<p>Things haven't covered:</p>
+<ul>
+<li>Uniformly sampling the hemisphere  </li>
+<li>
+<p>How? And in gengral. how to sample any function?   </p>
+</li>
+<li>
+<p>Monte Carlo intefration allows arbitatry pdfs  </p>
+</li>
+<li>
+<p>What's the best choice? (importance sampling)   </p>
+</li>
+<li>
+<p>Do random numbers matter?  </p>
+</li>
+<li>
+<p>Yes (low discrepancy sequences)  </p>
+</li>
+<li>
+<p>Sample the hemimsphere and the light  </p>
+</li>
+<li>
+<p>Can I combine them? Yes (multipe immp. sampling) </p>
+</li>
+<li>
+<p>The radiance of a pixel is the average of radiance on all paths passing through it  </p>
+</li>
+<li>
+<p>Why? (pixel reconstruction filter)  </p>
+</li>
+<li>
+<p>Is the radiance of a pixel the color of a pixel?  </p>
+</li>
+<li>No. (gamma correction, curves, color space)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
               </article>
             </div>
@@ -1127,26 +1430,26 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
   
-      <script src="/assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="/javascripts/hero-parallax.js"></script>
+        <script src="../../javascripts/hero-parallax.js"></script>
       
-        <script src="/javascripts/typewriter.js"></script>
+        <script src="../../javascripts/typewriter.js"></script>
       
-        <script src="/javascripts/card_tilt.js"></script>
+        <script src="../../javascripts/card_tilt.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
     
   <script>
     (function () {
-      var landing = "/landing.html";
+      var landing = "../../landing.html";
       var logoLink = document.querySelector("a.md-logo, .md-header__button.md-logo");
       if (logoLink) {
         logoLink.setAttribute("href", landing);

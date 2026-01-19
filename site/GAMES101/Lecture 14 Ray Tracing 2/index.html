@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://Abies_Inkbottle/GAMES101/Lecture%2014%20Ray%20Tracing%202/">
       
       
+        <link rel="prev" href="../Lecture%2013%20Ray%20Tracing%201/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../Lecture%2015%20Ray%20Tracing%203/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Abies' Inkbottle</title>
+        <title>Lec14 Ray Tracing 2(Acceleration) - Abies' Inkbottle</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,25 +48,25 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/nav-toc-hover.css">
+      <link rel="stylesheet" href="../../stylesheets/nav-toc-hover.css">
     
-      <link rel="stylesheet" href="/stylesheets/page-hero.css">
+      <link rel="stylesheet" href="../../stylesheets/page-hero.css">
     
-      <link rel="stylesheet" href="/stylesheets/frosted-header.css">
+      <link rel="stylesheet" href="../../stylesheets/frosted-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/colored-header.css">
+      <link rel="stylesheet" href="../../stylesheets/colored-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/typewriter.css">
+      <link rel="stylesheet" href="../../stylesheets/typewriter.css">
     
-      <link rel="stylesheet" href="/stylesheets/avatar.css">
+      <link rel="stylesheet" href="../../stylesheets/avatar.css">
     
-      <link rel="stylesheet" href="/stylesheets/homepage.css">
+      <link rel="stylesheet" href="../../stylesheets/homepage.css">
     
-      <link rel="stylesheet" href="/stylesheets/card_base.css">
+      <link rel="stylesheet" href="../../stylesheets/card_base.css">
     
-      <link rel="stylesheet" href="/stylesheets/admonitions.css">
+      <link rel="stylesheet" href="../../stylesheets/admonitions.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,6 +91,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#uniform-spatial-partitions-grids" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +106,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../.." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -115,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Lec14 Ray Tracing 2(Acceleration)
             
           </span>
         </div>
@@ -216,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -237,7 +248,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/CS231n/notes/cs231n_02/" class="md-tabs__link">
+        <a href="../../CS231n/notes/cs231n_02/" class="md-tabs__link">
           
   
   
@@ -253,11 +264,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
           
   
   
@@ -291,7 +304,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../.." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -309,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -372,7 +385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_02/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_02/" class="md-nav__link">
         
   
   
@@ -395,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_03/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_03/" class="md-nav__link">
         
   
   
@@ -418,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_04/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_04/" class="md-nav__link">
         
   
   
@@ -441,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_05/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_05/" class="md-nav__link">
         
   
   
@@ -464,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_06/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_06/" class="md-nav__link">
         
   
   
@@ -487,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_07/" class="md-nav__link">
+      <a href="../../CS231n/notes/cs231n_07/" class="md-nav__link">
         
   
   
@@ -551,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/assignments/a1_knn/" class="md-nav__link">
+      <a href="../../CS231n/assignments/a1_knn/" class="md-nav__link">
         
   
   
@@ -586,24 +599,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   
@@ -616,7 +634,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             GAMES101
@@ -630,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
+      <a href="../Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
         
   
   
@@ -653,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
+      <a href="../Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
         
   
   
@@ -676,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
+      <a href="../Lecture%2003%20Transformation/" class="md-nav__link">
         
   
   
@@ -699,7 +717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
+      <a href="../Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
         
   
   
@@ -722,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
+      <a href="../Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
         
   
   
@@ -745,7 +763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
+      <a href="../Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
         
   
   
@@ -768,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
+      <a href="../Lecture%2007%20Shading%201/" class="md-nav__link">
         
   
   
@@ -791,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
+      <a href="../Lecture%2008%20Shading%202/" class="md-nav__link">
         
   
   
@@ -814,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
+      <a href="../Lecture%2009%20Shading%203/" class="md-nav__link">
         
   
   
@@ -837,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
+      <a href="../Lecture%2010%20Geometry%201/" class="md-nav__link">
         
   
   
@@ -860,7 +878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
+      <a href="../Lecture%2011%20Geometry%202/" class="md-nav__link">
         
   
   
@@ -883,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
+      <a href="../Lecture%2012%20Geometry%203/" class="md-nav__link">
         
   
   
@@ -906,7 +924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
+      <a href="../Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
         
   
   
@@ -926,10 +944,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lec14 Ray Tracing 2(Acceleration)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -940,6 +978,99 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uniform-spatial-partitions-grids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniform Spatial Partitions (Grids)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spatial-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Partition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spatial Partition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kd-tree-pre-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      KD-Tree Pre-Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-partition-bounding-volume-hierarchy-bvh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Partition &amp; Bounding Volume Hierarchy (BVH)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-radiometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Radiometry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Radiometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#radiant-energy-and-flux-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiant Energy and Flux (Power)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radiant-intensity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiant Intensity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -952,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
+      <a href="../Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
         
   
   
@@ -975,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
+      <a href="../Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
         
   
   
@@ -998,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
+      <a href="../Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
         
   
   
@@ -1021,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
+      <a href="../Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
         
   
   
@@ -1044,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
+      <a href="../Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
         
   
   
@@ -1085,6 +1216,89 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uniform-spatial-partitions-grids" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uniform Spatial Partitions (Grids)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spatial-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spatial Partition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spatial Partition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kd-tree-pre-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      KD-Tree Pre-Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-partition-bounding-volume-hierarchy-bvh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Partition &amp; Bounding Volume Hierarchy (BVH)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-radiometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Radiometry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Radiometry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#radiant-energy-and-flux-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiant Energy and Flux (Power)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radiant-intensity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiant Intensity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1095,7 +1309,164 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+  
+  <div class="page-hero">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__flower" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">Lec14 Ray Tracing 2(Acceleration)</h1>
+    </div>
+  </div>
+  
+  
+                  
+
+
+
+  <h1>Lec14 Ray Tracing 2(Acceleration)</h1>
+
+<h2 id="uniform-spatial-partitions-grids">Uniform Spatial Partitions (Grids)</h2>
+<p><strong>Preprocesss: Build Acceleration Grid</strong></p>
+<ol>
+<li>Find bounding box</li>
+<li>Create grid</li>
+<li>Store each object in overlapping cells (将和物体表面有相交的各自标记)</li>
+<li>Step through grid in ray traversal order</li>
+</ol>
+<p>认为光线和盒子求交计算快、光线和物体求交计算慢</p>
+<p>根据光线的方向大致判断和哪些盒子相交。<br />
+当光线和盒子相交但盒子里没有物体（没被标记）时，跳过；<br />
+当光线和盒子相交但盒子里有物体时，计算是否和物体相交。</p>
+<p>若只需要找最近交点，找到交点后停止。</p>
+<p><strong>怎么确定划分的格子数？</strong></p>
+<p>格子太少，加速效果差；格子太多，光线和盒子的计算增加。</p>
+<p>格子数=C*场景中物体数，其中 3D 时 C 约为 27。</p>
+<p><strong>加速效果？</strong></p>
+<p>场景中物体分布均匀、物体多时，加速效果好；<br />
+场景中物体分布不均匀、部分区域空旷时，加速效果差；</p>
+<h2 id="spatial-partition">Spatial Partition</h2>
+<h3 id="kd-tree-pre-processing">KD-Tree Pre-Processing</h3>
+<p><strong>Spatial partition examples:</strong></p>
+<ul>
+<li>Oct-Tree（八叉树）<br />
+  将整个场景用包围盒包围，分成 8 块（3D），对每一个分成的区域再分成 8 块，直到其中一块中物体数量足够少</li>
+<li>KD-Tree<br />
+  每次分割时仅分成两块，分割方向 xyz 交替</li>
+<li>BSP-Tree
+  每次分割时仅分成两块，方向任意</li>
+</ul>
+<p><img alt="spatial partition" src="../resources/spatial%20partition.png" />{style="width:500px"}</p>
+<p><strong>KD-Tree storage:</strong></p>
+<p>Internal nodes store:</p>
+<ul>
+<li>split axis: x-, y- or z-</li>
+<li>split position: coordinate of split plane along axis</li>
+<li>children: pointers to child nodes</li>
+</ul>
+<p>Leaf nodes store:</p>
+<ul>
+<li>list of objects</li>
+</ul>
+<p><strong>Traversing a KD-Tree:</strong></p>
+<p>从整个场景开始，如果有交点，则看和子节点对应的盒子是否有交点，直到检查完所有有交点的叶节点。</p>
+<p><img alt="KDtree" src="../resources/KDtree.png" />{style="width:400px"}</p>
+<p><strong>问题：</strong></p>
+<ol>
+<li>需要知道包围盒和哪些三角形相交</li>
+<li>一个物体可出现在多个包围盒中</li>
+</ol>
+<h3 id="object-partition-bounding-volume-hierarchy-bvh">Object Partition &amp; Bounding Volume Hierarchy (BVH)</h3>
+<p>每次划分将三角形分成两组，分别重新求包围盒</p>
+<p>BVH 中一个物体只出现在一个包围盒中，不同的包围盒可能相交</p>
+<p>KD-Tree 划分空间，BVH 划分物体。实际 BVH 应用更广泛。</p>
+<p><img alt="BVH" src="../resources/BVH.png" />{style="width:400px"}</p>
+<p><strong>How to subdivide a node?</strong></p>
+<p>Choose a dimension to split</p>
+<ul>
+<li>1: Always choose the longest axis in node</li>
+<li>2: Split node at locaton of median object (balances tree)</li>
+</ul>
+<p><strong>Termination criteria?</strong></p>
+<p>Stop when node contains few elements (e.g. 5)</p>
+<p><strong>BVH traversal</strong></p>
+<pre><code class="language-c">Intersect(Ray ray, BVH node) {
+  if (ray misses node.bbox) return;
+
+  if (node is a leaf node) {
+    test intersection with all objs;
+    return closet intersection;
+  }
+
+  hit1 = Intersect(ray, node.child1);
+  hit2 = Intersect(ray, node.child2);
+  return the closer of hit1, hit2;
+}
+</code></pre>
+<h2 id="basic-radiometry">Basic Radiometry</h2>
+<p>Measurement system and units for illumination.</p>
+<p>Accurate measure the spatial properties of light<br />
+New terms: radiant flux, intersity, irradiance, radiance</p>
+<p>Perform lighting calculation in a physically correct manner</p>
+<h3 id="radiant-energy-and-flux-power">Radiant Energy and Flux (Power)</h3>
+<p><strong>Radiant energy</strong> is the energy of electromagnetic radiation. It is measured in units of joules, and denoted by the symbol:</p>
+<div class="arithmatex">\[Q\,[J=Joule]\]</div>
+<p><strong>Radiant flux (power)</strong> is the energy emitted, reflected, transmitted or received, per unit time.</p>
+<div class="arithmatex">\[\Phi\equiv\frac{\mathrm{d}Q}{\mathrm{d}t}\,[W=Watt]\,[ln=lumen]\]</div>
+<p>Flux: photons flowing through a sensor in unit time</p>
+<h3 id="radiant-intensity">Radiant Intensity</h3>
+<p><strong>Radiant (luminous) intensity</strong> is the power per unit solid angle emitted by a point light source.</p>
+<p><img alt="Radiant Intensity" src="../resources/Radiant%20Intensity.png" />{style="width:200px"}</p>
+<div class="arithmatex">\[I(\omega)\equiv\frac{\mathrm{d}\Phi}{\mathrm{d}\omega}\]</div>
+<div class="arithmatex">\[\left[\frac{W}{sr}\right]\,\left[\frac{lm}{sr}=cd=candela\right]\]</div>
+<p><strong>Angles and solid angles</strong></p>
+<p><strong>Angle:</strong> ratio of subtended arc length on circle to radius</p>
+<ul>
+<li><span class="arithmatex">\(\theta=frac{l}{r}\)</span></li>
+<li>Circle has <span class="arithmatex">\(2\pi\)</span> radians</li>
+</ul>
+<p><strong>Solid angle:</strong> ratio of subtended area on sphere to radius squared</p>
+<ul>
+<li><span class="arithmatex">\(\Omega=\frac{A}{r^2}\)</span></li>
+<li>Sphere has <span class="arithmatex">\(4\pi\)</span> steradians</li>
+</ul>
+<p><strong>Differential solid angles:</strong></p>
+<p><img alt="solid angle" src="../resources/solid%20angle.png" />{style="width:250px"}</p>
+<div class="arithmatex">\[
+\begin{align*}
+\mathrm{d}A&amp;=(r\mathrm{d}\theta)(r\sin\theta\mathrm{d}\phi)\\
+&amp;=r^2\sin\theta\mathrm{d}\theta\mathrm{d}\phi
+\end{align*}
+\]</div>
+<div class="arithmatex">\[\mathrm{d}\omega=\frac{\mathrm{d}A}{r^2}=\sin\theta\mathrm{d}\theta\mathrm{d}\phi\]</div>
+<p>Sphere:</p>
+<div class="arithmatex">\[
+\begin{align*}
+\Omega&amp;=\int_{S^2}\mathrm{d}\omega \\
+&amp;=\int_0^{2\pi}\int_0^{\pi}\sin\theta\mathrm{d}\theta\mathrm{d}\phi \\
+&amp;=4\pi
+\end{align*}
+\]</div>
+<p><strong>Isotropic point source:</strong></p>
+<div class="arithmatex">\[
+\begin{align*}
+\Phi&amp;=\int_{S^2}I\mathrm{d}\omega \\
+&amp;=4\pi I
+\end{align*}
+\]</div>
+<div class="arithmatex">\[I=\frac{\Phi}{4\pi}\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
               </article>
             </div>
@@ -1127,26 +1498,26 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
   
-      <script src="/assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="/javascripts/hero-parallax.js"></script>
+        <script src="../../javascripts/hero-parallax.js"></script>
       
-        <script src="/javascripts/typewriter.js"></script>
+        <script src="../../javascripts/typewriter.js"></script>
       
-        <script src="/javascripts/card_tilt.js"></script>
+        <script src="../../javascripts/card_tilt.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
     
   <script>
     (function () {
-      var landing = "/landing.html";
+      var landing = "../../landing.html";
       var logoLink = document.querySelector("a.md-logo, .md-header__button.md-logo");
       if (logoLink) {
         logoLink.setAttribute("href", landing);

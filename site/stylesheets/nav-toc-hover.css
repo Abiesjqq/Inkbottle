@@ -5,20 +5,20 @@
     bottom: 30px;
     height: auto;
     min-height: 0;
-    margin-top: 0;
+    margin-top: 50px;
     box-sizing: border-box;
     z-index: 50;
     pointer-events: auto;
 }
 
 [data-md-color-scheme="default"] {
-    --glass-bg: rgba(255, 255, 255, 0.72);
-    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(120, 81, 169, 0.08);
+    --glass-border: rgba(0, 0, 0, 0.02);
 }
 
 [data-md-color-scheme="slate"] {
-    --glass-bg: rgba(20, 24, 28, 0.55);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 240, 245, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.02);
 }
 
 .md-sidebar.md-sidebar--primary {
@@ -98,8 +98,8 @@
 }
 
 .md-main__inner {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding-left: 230px;
+    padding-right: 210px;
 }
 
 /* A: 如果方块变红，说明是 label 本体背景/阴影 */

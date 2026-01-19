@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://Abies_Inkbottle/CS231n/notes/cs231n_07/">
       
       
+        <link rel="prev" href="../cs231n_06/">
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+        <link rel="next" href="../../assignments/a1_knn/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Abies' Inkbottle</title>
+        <title>Lec6 Training Neural Networks II - Abies' Inkbottle</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,25 +48,25 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/nav-toc-hover.css">
+      <link rel="stylesheet" href="../../../stylesheets/nav-toc-hover.css">
     
-      <link rel="stylesheet" href="/stylesheets/page-hero.css">
+      <link rel="stylesheet" href="../../../stylesheets/page-hero.css">
     
-      <link rel="stylesheet" href="/stylesheets/frosted-header.css">
+      <link rel="stylesheet" href="../../../stylesheets/frosted-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/colored-header.css">
+      <link rel="stylesheet" href="../../../stylesheets/colored-header.css">
     
-      <link rel="stylesheet" href="/stylesheets/typewriter.css">
+      <link rel="stylesheet" href="../../../stylesheets/typewriter.css">
     
-      <link rel="stylesheet" href="/stylesheets/avatar.css">
+      <link rel="stylesheet" href="../../../stylesheets/avatar.css">
     
-      <link rel="stylesheet" href="/stylesheets/homepage.css">
+      <link rel="stylesheet" href="../../../stylesheets/homepage.css">
     
-      <link rel="stylesheet" href="/stylesheets/card_base.css">
+      <link rel="stylesheet" href="../../../stylesheets/card_base.css">
     
-      <link rel="stylesheet" href="/stylesheets/admonitions.css">
+      <link rel="stylesheet" href="../../../stylesheets/admonitions.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -85,6 +91,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#improve-optimization" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -95,7 +106,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../../.." title="Abies&#39; Inkbottle" class="md-header__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -115,7 +126,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Lec6 Training Neural Networks II
             
           </span>
         </div>
@@ -216,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -233,11 +244,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/CS231n/notes/cs231n_02/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../cs231n_02/" class="md-tabs__link">
           
   
   
@@ -257,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
+        <a href="../../../GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-tabs__link">
           
   
   
@@ -291,7 +304,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
+    <a href="../../.." title="Abies&#39; Inkbottle" class="md-nav__button md-logo" aria-label="Abies' Inkbottle" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.5 215.6 23 471c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l57-57h68c49.7 0 97.9-14.4 139-41 11.1-7.2 5.5-23-7.8-23-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l81-24.3c2.5-.8 4.8-2.1 6.7-4l22.4-22.4c10.1-10.1 2.9-27.3-11.3-27.3H377c-5.1 0-9.2-4.1-9.2-9.2 0-4.1 2.7-7.6 6.5-8.8l112-33.6c4-1.2 7.4-3.9 9.3-7.7 10.8-21 16.4-44.5 16.4-68.6 0-41-16.3-80.3-45.3-109.3l-5.5-5.5C432.3 16.3 393 0 352 0s-80.3 16.3-109.3 45.3L139 149c-48 48-75 113.1-75 181v55.3l189.6-189.5c6.2-6.2 16.4-6.2 22.6 0 5.4 5.4 6.1 13.6 2.2 19.8z"/></svg>
@@ -309,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -328,24 +341,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -358,7 +376,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             CS231n
@@ -372,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_02/" class="md-nav__link">
+      <a href="../cs231n_02/" class="md-nav__link">
         
   
   
@@ -395,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_03/" class="md-nav__link">
+      <a href="../cs231n_03/" class="md-nav__link">
         
   
   
@@ -418,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_04/" class="md-nav__link">
+      <a href="../cs231n_04/" class="md-nav__link">
         
   
   
@@ -441,7 +459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_05/" class="md-nav__link">
+      <a href="../cs231n_05/" class="md-nav__link">
         
   
   
@@ -464,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_06/" class="md-nav__link">
+      <a href="../cs231n_06/" class="md-nav__link">
         
   
   
@@ -484,10 +502,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/CS231n/notes/cs231n_07/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lec6 Training Neural Networks II
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -498,6 +536,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#improve-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improve Optimization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improve-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improve Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Learning
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -551,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/CS231n/assignments/a1_knn/" class="md-nav__link">
+      <a href="../../assignments/a1_knn/" class="md-nav__link">
         
   
   
@@ -630,7 +713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2001%20Overview%20of%20Computer%20Graphics/" class="md-nav__link">
         
   
   
@@ -653,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2002%20Review%20of%20Linear%20Algebra/" class="md-nav__link">
         
   
   
@@ -676,7 +759,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2003%20Transformation/" class="md-nav__link">
         
   
   
@@ -699,7 +782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2004%20Transformations%20Cont/" class="md-nav__link">
         
   
   
@@ -722,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2005%20Rasterization%201%20%28Triangles%29/" class="md-nav__link">
         
   
   
@@ -745,7 +828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2006%20Rasterization%202%20%28Antiliasing%29/" class="md-nav__link">
         
   
   
@@ -768,7 +851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2007%20Shading%201/" class="md-nav__link">
         
   
   
@@ -791,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2008%20Shading%202/" class="md-nav__link">
         
   
   
@@ -814,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2009%20Shading%203/" class="md-nav__link">
         
   
   
@@ -837,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2010%20Geometry%201/" class="md-nav__link">
         
   
   
@@ -860,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2011%20Geometry%202/" class="md-nav__link">
         
   
   
@@ -883,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2012%20Geometry%203/" class="md-nav__link">
         
   
   
@@ -906,7 +989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2013%20Ray%20Tracing%201/" class="md-nav__link">
         
   
   
@@ -929,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2014%20Ray%20Tracing%202/" class="md-nav__link">
         
   
   
@@ -952,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2015%20Ray%20Tracing%203/" class="md-nav__link">
         
   
   
@@ -975,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2016%20Ray%20Tracing%204/" class="md-nav__link">
         
   
   
@@ -998,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2017%20Materials%20and%20Appearances/" class="md-nav__link">
         
   
   
@@ -1021,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2018%20Advanced%20Topics%20in%20Rendering/" class="md-nav__link">
         
   
   
@@ -1044,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
+      <a href="../../../GAMES101/Lecture%2019%20Cameras%2C%20Lenses%20and%20Light%20Fields/" class="md-nav__link">
         
   
   
@@ -1085,6 +1168,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#improve-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improve Optimization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improve-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Improve Performance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transfer Learning
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1095,7 +1213,132 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+  
+  <div class="page-hero">
+    <div class="page-hero__bg" aria-hidden="true"></div>
+    <div class="page-hero__flower" aria-hidden="true"></div>
+    <div class="page-hero__inner">
+      <h1 class="page-hero__title">Lec6 Training Neural Networks II</h1>
+    </div>
+  </div>
+  
+  
+                  
+
+
+
+  <h1>Lec6 Training Neural Networks II</h1>
+
+<h2 id="improve-optimization">Improve Optimization</h2>
+<pre><code class="language-py">while True:
+    weights_grad = evaluate_gradient(loss_fun, data, weights)
+    weights += -step_size * weights_grad
+</code></pre>
+<p>Problem:</p>
+<ol>
+<li>Loss function sensitive in one direction but not in another direction. SGD will have zigzag bahavior.</li>
+<li>The loss function has a local minima or saddle point (in higher space, loss go up in some directions and down in other directions). SGD will get stuck.</li>
+<li>Our gradients come from minibatches so they can be noisy.</li>
+</ol>
+<p><strong>SGD + Momentum</strong>:</p>
+<pre><code class="language-py">vx = 0
+while True:
+    dx = compute_gradient(x)
+    vx = rho * vx + dx
+    x += learning_rate * vx
+</code></pre>
+<p><strong>Nesterov Momentum</strong>: First step in the direction os velocity, then compute the gradient at the new position.</p>
+<pre><code class="language-py">dx = compute_gradient(x)
+old_v = v
+v = rho * v - learning_rate * dx
+x += -rho * old_v + (1 + rho) * v
+</code></pre>
+<p><strong>AdaGrad</strong>: add element-wise scaling of the gradient based on the historical sum of squares in wach dimension.</p>
+<p>The sum get larger and the step get slower. Its good in convex case but not in non-convex case.</p>
+<pre><code class="language-py">grad_squared = 0
+while True:
+    dx = compute_gradient(x)
+    grad_squared += dx * dx
+    x -= learning_rate * dx / (np.sqrt(grad_squared) + 1e-7)
+</code></pre>
+<p><strong>RMSProp</strong>: adjust to let the square estimate decay.</p>
+<pre><code class="language-py">grad_squared = 0
+while True:
+    dx = compute_gradient(x)
+    grad_squared = decay_rate * grad_squared + (1 - decay_rate) * dx * dx
+    x -= learning_rate * dx / (np.sqrt(grad_squared) + 1e-7)
+</code></pre>
+<p><strong>Adam</strong>: combine momentum and AdsGrad/RMSProp.</p>
+<p>To avoid a very large step at the beginning (becouse beta2 is close to one and second_moment is small in the first loop), add unbias terms.</p>
+<pre><code class="language-py">first_moment = 0
+second_moment = 0
+while True:
+    dx = compute_gradient(x)
+    first_moment = beta1 * first_moment + (1 - beta1) * dx
+    second_moment = beta2 * second_moment + (1 - beta2) * dx * dx
+    first_unbias = first_moment / (1 - beta1 ** t)
+    second_unbias = second_moment / (1 - beta2 ** t)
+    x -= learning_rate * forst_moment / (np.sqrt(second_moment) + 1e-7)
+</code></pre>
+<p>Adam with beta1 = 0.9, beta2 = 0.999, and learning_rate = 1e-3 or 5e-4 is a great starting point for many models.</p>
+<p>Learning rate can decay over time, which is especially common in momentum. E.g., exponential decay: <span class="arithmatex">\(\alpha=\alpha_0e^{-kt}\)</span>.</p>
+<p><strong>Second-order optimization</strong>:</p>
+<ul>
+<li>First-order optimization: use gradient form linear approximation; step to minimize the approximation.</li>
+<li>Second-order optimization: use gradient and Hessian to form quadratic approximation; step to minima of the approximation.</li>
+</ul>
+<p>Second-order Taylor expansion:</p>
+<div class="arithmatex">\[J(\theta)\approx J(\theta_0)+(\theta-\theta_0_^T\nabla_{\theta})J(\theta_0)+\frac{1}{2}(\theta-\theta_0)^T H(\theta-\theta_0).\]</div>
+<p>Solving for the critical point we obtain the Newton parameter update:</p>
+<div class="arithmatex">\[\theta^*=\theta_0-H^{-1}\nabla_{\theta}J(\theta_0).\]</div>
+<p><strong>Quasi-Newton methods (BGFS most popular)</strong>: instead of invertin the Hessian (<span class="arithmatex">\(O(n^3)\)</span>), approximate inverse Hessian with rank 1 updates over time (<span class="arithmatex">\(O(n^2)\)</span> each).</p>
+<p><strong>L-BFGS</strong>: does not form/store the full inverse Hessian.</p>
+<h2 id="improve-performance">Improve Performance</h2>
+<p><strong>Model ensembles</strong>: train multiple independent models. At test time averafe their results. Instead of training independent models, we can also use multiple snapshots of a single model during training.</p>
+<p>Polyak averaging: keep a moving average of the parameter vector and use that at test time.</p>
+<p><strong>Regularizarion</strong>: add term to loss.</p>
+<p><strong>Dropout</strong>: in each forward pass, randomly set some neurons to zero. Probability of dropping is a hyperparameter.</p>
+<p>Dropout on training a large ensemble of models that share parameters. Each binary mask is one model. At test time, multiply by dropout probability.</p>
+<p><strong>Data augmentation</strong>: random flips, crops, scales, color jitters of images.</p>
+<p><strong>Dropconnect</strong>: randomly zero out some oh the values of the weights matrix.</p>
+<p><strong>Fraction max pooling, stochastic depth...</strong></p>
+<h2 id="transfer-learning">Transfer Learning</h2>
+<p>Situation: train on large imagenet, and use on small dataset.</p>
+<p>Freeze the weights of previous layers, and only reinitialize the last matrix.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>very similar dataset</th>
+<th>very different dataset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>very little data</strong></td>
+<td>Use Linear Classifier on top layer</td>
+<td>You're in trouble... Try linear classifier from different stages</td>
+</tr>
+<tr>
+<td><strong>quite a lot of data</strong></td>
+<td>Finetune a few layers</td>
+<td>Finetune a larger number of layers</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
 
               </article>
             </div>
@@ -1127,26 +1370,26 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "/assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["header.autohide", "navigation.tabs", "search.suggest", "search.highlight", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
   
-      <script src="/assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="/javascripts/hero-parallax.js"></script>
+        <script src="../../../javascripts/hero-parallax.js"></script>
       
-        <script src="/javascripts/typewriter.js"></script>
+        <script src="../../../javascripts/typewriter.js"></script>
       
-        <script src="/javascripts/card_tilt.js"></script>
+        <script src="../../../javascripts/card_tilt.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
       
-        <script src="/javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
     
   <script>
     (function () {
-      var landing = "/landing.html";
+      var landing = "../../../landing.html";
       var logoLink = document.querySelector("a.md-logo, .md-header__button.md-logo");
       if (logoLink) {
         logoLink.setAttribute("href", landing);
