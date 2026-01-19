@@ -29,6 +29,7 @@ body:not(.md-home) .md-content {
 
 .page-hero__bg {
   --hero-bg-clip: 100%;
+  --hero-bg-offset: -50px;
   position: absolute;
   left: 0;
   right: 0;

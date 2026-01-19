@@ -1,5 +1,14 @@
 site_name: Abies' Inkbottle
 site_url: https://Abies_Inkbottle
+nav:
+  - Index: index/index.md
+  - dir1:
+    - test10: dir1/test10.md
+    - text11: dir1/text11.md
+    - dir2:
+      - dir3:
+        - dir4:
+          - test40: dir1/dir2/dir3/dir4/test40.md
 theme:
   name: material
   
@@ -34,6 +43,8 @@ theme:
 extra_css:
   - stylesheets/nav-toc-hover.css
   - stylesheets/page-hero.css
+  - stylesheets/frosted-header.css
+  - stylesheets/colored-header.css
 
 extra_javascript:
   - javascripts/hero-parallax.js

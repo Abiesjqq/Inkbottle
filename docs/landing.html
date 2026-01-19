@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abies' Inkbottle</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        min-height: max(100vh, calc(100vw * 5118 / 2860));
+        display: block;
+        padding: 4rem 1.5rem;
+        font-family: "Georgia", "Times New Roman", serif;
+        background: url("./assets/landing_background.jpg") top center / 100% auto no-repeat;
+        background-color: #acace6;
+        color: #3a2d1f;
+      }
+      .card {
+        width: min(720px, 92vw);
+        padding: 3.5rem 3rem;
+        margin: 120px auto 0;
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(58, 45, 31, 0.15);
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(58, 45, 31, 0.2);
+        text-align: center;
+        backdrop-filter: blur(6px);
+        animation: float-card 4s ease-in-out infinite;
+      }
+      @keyframes float-card {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      h1 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(2rem, 3vw + 1rem, 3.5rem);
+        letter-spacing: 0.02em;
+      }
+      p {
+        margin: 0 0 2rem;
+        font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+        line-height: 1.6;
+      }
+      .enter {
+        display: inline-block;
+        padding: 0.85rem 2.4rem;
+        border-radius: 999px;
+        border: 1px solid #3a2d1f;
+        background: #3a2d1f;
+        color: #f7efe3;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+      .enter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(58, 45, 31, 0.25);
+      }
+      .footer {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Abies' Inkbottle</h1>
+      <p style="font-size:100px">&#128536;</p>
+      <a class="enter" href="./index/">Enter</a>
+      <div class="footer">A quiet corner for notes and stories.</div>
+    </main>
+  </body>
+</html>
