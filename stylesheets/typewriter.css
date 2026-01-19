@@ -1,0 +1,68 @@
+/* Typewriter effect styles */
+.abies-header-subtitle {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #6D6D6D;
+  position: relative;
+  margin-bottom: 22px;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  white-space: normal;
+  min-height: calc(1.3em * 2);
+}
+
+.abies-header-subtitle-inner {
+  color: #6D6D6D;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+  letter-spacing: 0.5px;
+  white-space: normal;
+  max-width: 900px;
+  width: auto;
+  min-width: 280px;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  color: #518FC1;
+  font-weight: 300;
+  animation: blink 1s steps(1, end) infinite;
+  margin-left: 2px;
+  will-change: opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@-webkit-keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Typewriter text wrapping */
+#typewriter-text {
+  display: inline;
+  max-width: 900px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .abies-header-subtitle {
+  color: #757575;
+}
+
+[data-md-color-scheme="slate"] .abies-header-subtitle-inner {
+  color: #b0b0b0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}

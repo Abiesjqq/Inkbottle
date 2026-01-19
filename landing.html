@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abies' Inkbottle</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap");
+      :root {
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        min-height: max(100vh, calc(100vw * 5118 / 2860));
+        display: block;
+        padding: 4rem 1.5rem;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        overscroll-behavior-y: contain;
+        font-family: "Georgia", "Times New Roman", serif;
+        background: url("./assets/images/landing_background.jpg") top center / 100% auto no-repeat;
+        background-color: #acace6;
+        color: #3a2d1f;
+      }
+      .card {
+        width: min(570px, 80vw);
+        padding: 3.5rem 3rem;
+        margin: 65px auto 0;
+        background: rgba(0, 0, 0, 0.41);
+        border: 1px solid rgba(58, 45, 31, 0.15);
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(58, 45, 31, 0.2);
+        text-align: center;
+        backdrop-filter: blur(6px);
+        animation: float-card 4s ease-in-out infinite;
+        color: #f7f2e8;
+      }
+      @keyframes float-card {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      h1 {
+        margin: 0 0 0.75rem;
+        font-family: "UnifrakturCook", "Times New Roman", serif;
+        font-size: clamp(1.7rem, 2.4vw + 0.9rem, 3rem);
+        letter-spacing: 0.02em;
+      }
+      .boi {
+        --happiness: 0.6;
+        --derp: 1;
+        --px: 0.5;
+        --py: 0.5;
+        width: 10.5rem;
+        height: 10.5rem;
+        margin: 0 auto 1.5rem;
+        background-image: radial-gradient(#ffe0a6, #f2b233);
+        border-radius: 100%;
+        overflow: hidden;
+        border: solid 2px #f0a72b;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+      .boi,
+      .boi * {
+        position: absolute;
+      }
+      .boi {
+        position: relative;
+      }
+      .boi::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom, #5a8, rgba(85, 170, 136, 0));
+        opacity: calc(1 - var(--happiness));
+      }
+      .boi-blush {
+        width: 20%;
+        height: 10%;
+        background-color: rgba(255, 90, 90, 0.45);
+        border: 3px solid rgba(255, 90, 90, 0.45);
+        top: calc(45% + var(--py) * 10%);
+        border-radius: 100%;
+        opacity: calc(var(--happiness) * var(--happiness) * 0.9 + 0.1);
+      }
+      .boi-blush-left {
+        left: calc(7% + var(--px) * 2%);
+      }
+      .boi-blush-right {
+        right: calc(9% - var(--px) * 2%);
+      }
+      .boi-eye {
+        width: calc(26% - var(--happiness) * 2%);
+        height: calc(26% - var(--happiness) * 2%);
+        background-color: #f6f6f6;
+        border-radius: 100%;
+        top: calc(25% + var(--py) * 10%);
+        overflow: hidden;
+      }
+      .boi-eye-left {
+        left: calc(18% + var(--px) * 4%);
+      }
+      .boi-eye-left::after {
+        transform: translate(
+          calc((var(--px) + var(--derp) * 0.5) * 100%),
+          calc((var(--py) + var(--derp) * 0.5) * 100%)
+        );
+      }
+      .boi-eye-right {
+        right: calc(22% - var(--px) * 4%);
+      }
+      .boi-eye-right::after {
+        transform: translate(
+          calc((var(--px) + var(--derp) * -0.3) * 100%),
+          calc((var(--py) + var(--derp) * -0.3) * 100%)
+        );
+      }
+      .boi-eye::after {
+        content: "";
+        display: block;
+        background-color: #421;
+        width: calc(55% - var(--happiness) * 10%);
+        height: calc(55% - var(--happiness) * 10%);
+        border-radius: 100%;
+      }
+      .boi-mouth {
+        width: calc(51% - var(--happiness) * 2%);
+        height: calc(26% - var(--happiness) * 2%);
+        background-color: #a33;
+        border-radius: calc((1 - var(--happiness)) * 10em)
+          calc((1 - var(--happiness)) * 10em)
+          calc(var(--happiness) * 16em)
+          calc(var(--happiness) * 16em);
+        top: calc(57.5% + var(--py) * 5%);
+        left: calc(47.5% + var(--px) * 5%);
+        transform: translateX(-50%);
+        overflow: hidden;
+        border: 3px solid #962d2d;
+        mask-image: radial-gradient(white, black);
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
+      }
+      .boi-mouth::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        top: 0;
+        left: 50%;
+        background-color: white;
+        border-radius: 0 0 0.5rem 0.5rem;
+      }
+      .boi-mouth::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 60%;
+        height: 50%;
+        left: 10%;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 20rem 20rem 0 0;
+      }
+      p {
+        margin: 0 0 2rem;
+        font-size: clamp(1rem, 0.6vw + 0.9rem, 1.25rem);
+        line-height: 1.6;
+      }
+      .enter {
+        display: inline-block;
+        padding: 0.85rem 2.4rem;
+        border-radius: 999px;
+        border: 1px solid #693f86;
+        background: #693f86;
+        color: #f7efe3;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+      .enter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(58, 45, 31, 0.25);
+      }
+      .footer {
+        margin-top: 2rem;
+        font-size: 0.9rem;
+        opacity: 0.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Would you dare step into my inkbottle?</h1>
+      <figure class="boi" aria-hidden="true">
+        <div class="boi-blush boi-blush-left"></div>
+        <div class="boi-blush boi-blush-right"></div>
+        <div class="boi-eye boi-eye-left"></div>
+        <div class="boi-eye boi-eye-right"></div>
+        <div class="boi-mouth"></div>
+      </figure>
+      <a class="enter" id="enter-btn" href="./">Enter</a>
+    </main>
+    <script>
+      const button = document.getElementById("enter-btn");
+      const boi = document.querySelector(".boi");
+      const current = {
+        happiness: 0.6,
+        derp: 1,
+        px: 0.5,
+        py: 0.5,
+      };
+      const target = { ...current };
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function updateEmoji(clientX, clientY) {
+        const rect = button.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = clientX - centerX;
+        const dy = clientY - centerY;
+        const distance = Math.hypot(dx, dy);
+        const corners = [
+          { x: 0, y: 0 },
+          { x: window.innerWidth, y: 0 },
+          { x: 0, y: window.innerHeight },
+          { x: window.innerWidth, y: window.innerHeight },
+        ];
+        const maxDistance = Math.max(
+          ...corners.map(({ x, y }) => Math.hypot(x - centerX, y - centerY))
+        );
+        const t = 1 - clamp(distance / maxDistance, 0, 1);
+        const px = clamp(clientX / window.innerWidth, 0, 1);
+        const py = clamp(clientY / window.innerHeight, 0, 1);
+        target.happiness = 0.2 + t * 0.8;
+        target.derp = 0;
+        target.px = px;
+        target.py = py;
+      }
+
+      document.addEventListener("mousemove", (event) => {
+        updateEmoji(event.clientX, event.clientY);
+      });
+
+      function updateBoi() {
+        for (const prop in target) {
+          if (target[prop] === current[prop]) {
+            continue;
+          }
+          if (Math.abs(target[prop] - current[prop]) < 0.01) {
+            current[prop] = target[prop];
+          } else {
+            current[prop] += (target[prop] - current[prop]) * 0.1;
+          }
+          boi.style.setProperty(`--${prop}`, current[prop]);
+        }
+        requestAnimationFrame(updateBoi);
+      }
+
+      updateEmoji(window.innerWidth / 2, window.innerHeight / 2);
+      updateBoi();
+    </script>
+  </body>
+</html>
