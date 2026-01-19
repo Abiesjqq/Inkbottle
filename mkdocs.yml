@@ -45,6 +45,10 @@ extra_css:
   - stylesheets/page-hero.css
   - stylesheets/frosted-header.css
   - stylesheets/colored-header.css
+  - stylesheets/typewriter.css
+  - stylesheets/avatar.css
+  - stylesheets/homepage.css
 
 extra_javascript:
   - javascripts/hero-parallax.js
+  - javascripts/typewriter.js
