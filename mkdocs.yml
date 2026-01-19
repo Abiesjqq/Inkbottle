@@ -1,14 +1,38 @@
 site_name: Abies' Inkbottle
 site_url: https://Abies_Inkbottle
 nav:
-  - Index: index.md
-  - dir1:
-    - test10: dir1/test10.md
-    - text11: dir1/text11.md
-    - dir2:
-      - dir3:
-        - dir4:
-          - test40: dir1/dir2/dir3/dir4/test40.md
+  - Homepage: index.md
+  - CS231n:
+    - Lec1 Image Classification: CS231n/notes/cs231n_02.md
+    - Lec2 Loss Functions and Optimization: CS231n/notes/cs231n_03.md
+    - Lec3 Introduction to Neural Networks: CS231n/notes/cs231n_04.md
+    - Lec4 Convolutional Neural Networks: CS231n/notes/cs231n_05.md
+    - Lec5 Training Neural Networks I: CS231n/notes/cs231n_06.md
+    - Lec6 Training Neural Networks II: CS231n/notes/cs231n_07.md
+    - Assignment 1:
+        - KNN: CS231n/assignments/a1_knn.md
+  - GAMES101:
+    - Lec1 Overview of Computer Graphics: GAMES101/Lecture 01 Overview of Computer Graphics.md
+    - Lec2 eview of Linear Algebra: GAMES101/Lecture 02 Review of Linear Algebra.md
+    - Lec3 Transformation: GAMES101/Lecture 03 Transformation.md
+    - Lec4 Transformations Cont.: GAMES101/Lecture 04 Transformations Cont.md
+    - Lec5 Rasterization 1 (Triangles): GAMES101/Lecture 05 Rasterization 1 (Triangles).md
+    - Lec6 Rasterization 2 (Antiliasing): GAMES101/Lecture 06 Rasterization 2 (Antiliasing).md
+    - Lec7 Shading 1 (Illumination, Shading and Graphics Pipelines): GAMES101/Lecture 07 Shading 1.md
+    - Lec8 Shading 2 (Shading, Pipeline and Texture Mapping): GAMES101/Lecture 08 Shading 2.md
+    - Lec9 Shading 3 (Texture Mapping cont.): GAMES101/Lecture 09 Shading 3.md
+    - Lec10 Geomertry 1 (Introduction): GAMES101/Lecture 10 Geometry 1.md
+    - Lec11 Geomertry 2 (Curves and Surfaces): GAMES101/Lecture 11 Geometry 2.md
+    - Lec12 Geometry 3: GAMES101/Lecture 12 Geometry 3.md
+    - Lec13 Ray Tracing 1 (Whitted-Style Ray Tracing): GAMES101/Lecture 13 Ray Tracing 1.md
+    - Lec14 Ray Tracing 2(Acceleration): GAMES101/Lecture 14 Ray Tracing 2.md
+    - Lec15 Ray Tracing 3(Light Transport & Global Illumination): GAMES101/Lecture 15 Ray Tracing 3.md
+    - Lec16 Ray Tracing 4(Monte Carlo Path Tracing): GAMES101/Lecture 16 Ray Tracing 4.md
+    - Lec17 Materials and Appearances: GAMES101/Lecture 17 Materials and Appearances.md
+    - Lec18 Advanced Topics in Rendering: GAMES101/Lecture 18 Advanced Topics in Rendering.md
+    - Lec19 Cameras, Lenses and Light Fields: GAMES101/Lecture 19 Cameras, Lenses and Light Fields.md
+
+
 theme:
   name: material
   
@@ -22,13 +46,13 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: deep purple
-      accent: indigo
+      accent: deep purple
       toggle:
         icon: material/weather-night
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: deep purple
-      accent: indigo
+      accent: deep purple
       toggle:
         icon: material/weather-sunny
 
@@ -40,6 +64,12 @@ theme:
     - content.code.copy
     - content.code.select
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.arithmatex:
+      generic: true
+
 extra_css:
   - stylesheets/nav-toc-hover.css
   - stylesheets/page-hero.css
@@ -49,8 +79,14 @@ extra_css:
   - stylesheets/avatar.css
   - stylesheets/homepage.css
   - stylesheets/card_base.css
+  - stylesheets/admonitions.css
 
 extra_javascript:
   - javascripts/hero-parallax.js
   - javascripts/typewriter.js
   - javascripts/card_tilt.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js
+  - javascripts/mathjax.js
+
+extra:
+  generator: false

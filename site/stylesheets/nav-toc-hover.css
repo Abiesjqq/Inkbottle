@@ -1,11 +1,11 @@
 .md-sidebar.md-sidebar--primary,
 .md-sidebar.md-sidebar--secondary {
     position: fixed;
-    /* top: 650px;
-    bottom: 40px; */
-    height: calc(100% - 31px);
-    min-height: calc(100% - 31px);
-    margin-top: 31px;
+    top: 31px;
+    bottom: 30px;
+    height: auto;
+    min-height: 0;
+    margin-top: 0;
     box-sizing: border-box;
     z-index: 50;
     pointer-events: auto;
@@ -31,12 +31,13 @@
 
 .md-sidebar.md-sidebar--primary .md-sidebar__inner,
 .md-sidebar.md-sidebar--secondary .md-sidebar__inner {
-    height: calc(100% - 37px);
-    min-height: calc(100% - 37px);
-    margin-top: 37px;
+    height: 100%;
+    min-height: 0;
+    margin-top: 0;
     box-sizing: border-box;
     border-radius: 16px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding-top: 18px;
     background: var(--glass-bg);
     backdrop-filter: blur(14px) saturate(120%);
@@ -64,7 +65,8 @@
 
 .md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap,
 .md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap {
-    overflow-x: hidden;
+    height: 100%;
+    overflow: hidden;
 }
 
 .md-sidebar.md-sidebar--primary:hover .md-sidebar__inner,

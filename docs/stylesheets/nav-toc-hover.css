@@ -1,24 +1,24 @@
 .md-sidebar.md-sidebar--primary,
 .md-sidebar.md-sidebar--secondary {
     position: fixed;
-    /* top: 650px;
-    bottom: 40px; */
-    height: calc(100% - 31px);
-    min-height: calc(100% - 31px);
-    margin-top: 31px;
+    top: 31px;
+    bottom: 30px;
+    height: auto;
+    min-height: 0;
+    margin-top: 50px;
     box-sizing: border-box;
     z-index: 50;
     pointer-events: auto;
 }
 
 [data-md-color-scheme="default"] {
-    --glass-bg: rgba(255, 255, 255, 0.72);
-    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(120, 81, 169, 0.08);
+    --glass-border: rgba(0, 0, 0, 0.02);
 }
 
 [data-md-color-scheme="slate"] {
-    --glass-bg: rgba(20, 24, 28, 0.55);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 240, 245, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.02);
 }
 
 .md-sidebar.md-sidebar--primary {
@@ -31,12 +31,13 @@
 
 .md-sidebar.md-sidebar--primary .md-sidebar__inner,
 .md-sidebar.md-sidebar--secondary .md-sidebar__inner {
-    height: calc(100% - 37px);
-    min-height: calc(100% - 37px);
-    margin-top: 37px;
+    height: 100%;
+    min-height: 0;
+    margin-top: 0;
     box-sizing: border-box;
     border-radius: 16px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     padding-top: 18px;
     background: var(--glass-bg);
     backdrop-filter: blur(14px) saturate(120%);
@@ -64,7 +65,8 @@
 
 .md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap,
 .md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap {
-    overflow-x: hidden;
+    height: 100%;
+    overflow: hidden;
 }
 
 .md-sidebar.md-sidebar--primary:hover .md-sidebar__inner,
@@ -96,8 +98,8 @@
 }
 
 .md-main__inner {
-    padding-left: 110px;
-    padding-right: 110px;
+    padding-left: 230px;
+    padding-right: 210px;
 }
 
 /* A: 如果方块变红，说明是 label 本体背景/阴影 */

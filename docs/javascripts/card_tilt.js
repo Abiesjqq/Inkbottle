@@ -947,8 +947,8 @@ function Ut(e, t, s) {
     --pointer-from-top: ${g.y / 100};
     --pointer-from-left: ${g.x / 100};
     --card-opacity: ${g.o};
-    --rotate-x: ${ie(w.x + a.x, -19.5, 19.5)}deg;
-    --rotate-y: ${ie(w.y + a.y, -19.5, 19.5)}deg;
+    --rotate-x: ${ie(w.x + a.x, -6.5, 6.5)}deg;
+    --rotate-y: ${ie(w.y + a.y, -6.5, 6.5)}deg;
     --background-x: ${f.x}%;
     --background-y: ${f.y}%;
     --card-scale: ${h};
@@ -1271,16 +1271,18 @@ if (_cards.length) {
   _cards.forEach((el) => {
     const img = el.getAttribute("data-img") || "";
     const name = el.getAttribute("data-name") || "";
+    const pageURL = el.getAttribute("data-url") || "";
     new Nt({
       target: el,
       props: {
         name,
         img,
+        pageURL,
         types: "Colorless",
         supertype: "Pokemon",
         subtypes: "Basic",
         rarity: "Rare Holo",
-        showcase: !0,
+        showcase: !1,
       },
     });
   });

@@ -71,7 +71,7 @@ hide:
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 0.9rem;
     margin: 2rem 0;
   }
 
@@ -81,9 +81,8 @@ hide:
 </style>
 
 <div class="card-row">
-  <div class="card-slot" data-name="Writeups" data-img="./assets/card_images/writeups.png"></div>
-  <div class="card-slot" data-name="RISC-V" data-img="./assets/card_images/riscv.png"></div>
-  <div class="card-slot" data-name="QR Code" data-img="/assets/card_images/qrcode.png"></div>
+  <div class="card-slot" data-name="spy_family1" data-img="./assets/card_images/spy_family1.jpg" data-url="./assets/card_images/spy_family1.jpg"></div>
+  <div class="card-slot" data-name="spy_family2" data-img="./assets/card_images/spy_family2.jpg" data-url="./assets/card_images/spy_family2.jpg"></div>
 </div>
 
 <script src="/javascripts/card_tilt.js" defer></script>

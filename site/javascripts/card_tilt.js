@@ -1269,7 +1269,7 @@ if (_cards.length) {
         supertype: "Pokemon",
         subtypes: "Basic",
         rarity: "Rare Holo",
-        showcase: !0,
+        showcase: !1,
       },
     });
   });
