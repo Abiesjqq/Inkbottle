@@ -622,8 +622,13 @@ function It(e) {
         u(n, "loading", "lazy"),
         u(n, "width", "660"),
         u(n, "height", "921"),
-        ge(f.src, (a = e[9].replace(".png", ".light.png#only-light"))) ||
-          u(f, "src", a),
+        ge(
+          f.src,
+          (a =
+            e[9] && e[9].includes("/card_images/")
+              ? e[9] + "#only-light"
+              : e[9].replace(".png", ".light.png#only-light")),
+        ) || u(f, "src", a),
         u(f, "alt", "card (light)"),
         u(f, "loading", "lazy"),
         u(f, "width", "660"),
@@ -675,7 +680,13 @@ function It(e) {
     p(m, d) {
       (d[0] & 512 && !ge(n.src, (c = m[9] + "#only-dark")) && u(n, "src", c),
         d[0] & 512 &&
-          !ge(f.src, (a = m[9].replace(".png", ".light.png#only-light"))) &&
+          !ge(
+            f.src,
+            (a =
+              m[9] && m[9].includes("/card_images/")
+                ? m[9] + "#only-light"
+                : m[9].replace(".png", ".light.png#only-light")),
+          ) &&
           u(f, "src", a),
         d[0] & 32768 && L !== (L = m[25] + m[15]) && u(r, "style", L),
         d[0] & 2 &&

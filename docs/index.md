@@ -81,8 +81,8 @@ hide:
 </style>
 
 <div class="card-row">
-  <div class="card-slot" data-name="Writeups" data-img="/assets/card_images/writeups.png"></div>
-  <div class="card-slot" data-name="RISC-V" data-img="/assets/card_images/riscv.png"></div>
+  <div class="card-slot" data-name="Writeups" data-img="./assets/card_images/writeups.png"></div>
+  <div class="card-slot" data-name="RISC-V" data-img="./assets/card_images/riscv.png"></div>
   <div class="card-slot" data-name="QR Code" data-img="/assets/card_images/qrcode.png"></div>
 </div>
 
