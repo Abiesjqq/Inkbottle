@@ -12,3 +12,16 @@
   {% endif %}
   {{ super() }}
 {% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script>
+    (function () {
+      var landing = "{{ 'landing.html' | url }}";
+      var logoLink = document.querySelector("a.md-logo, .md-header__button.md-logo");
+      if (logoLink) {
+        logoLink.setAttribute("href", landing);
+      }
+    })();
+  </script>
+{% endblock %}
