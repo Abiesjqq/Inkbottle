@@ -1,0 +1,189 @@
+/* Homepage header layout and typography */
+.abies-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 64px;
+  margin: 70px 0 16px;
+  width: calc(100vw + 380px);
+  margin-left: calc(50% - 50vw - 200px);
+  margin-right: 0;
+  flex-wrap: wrap;
+  min-height: 320px;
+  -webkit-box-align: start;
+  -webkit-box-pack: center;
+}
+
+.abies-header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 260px;
+  max-width: 700px;
+  flex: 1 1 320px;
+  padding: 0;
+}
+
+.abies-header-title {
+  font-size: 1.9rem;
+  font-family: "Inter", "Montserrat", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 18px;
+  color: #4a4a4a;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.abies-name-box {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  padding: 4px 14px;
+  margin-left: 8px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px dashed #ad66a9;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(107, 142, 107, 0.15);
+  vertical-align: middle;
+}
+
+.abies-name-box::before,
+.abies-name-box::after,
+.abies-name-box .corner-bl,
+.abies-name-box .corner-br {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #9370db;
+  border-radius: 1.5px;
+}
+
+.abies-name-box::before {
+  top: -3px;
+  left: -3px;
+}
+
+.abies-name-box::after {
+  top: -3px;
+  right: -3px;
+}
+
+.abies-name-box .corner-bl {
+  position: absolute;
+  bottom: -3px;
+  left: -3px;
+  width: 6px;
+  height: 6px;
+  background: #9370db;
+  border-radius: 1.5px;
+}
+
+.abies-name-box .corner-br {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  width: 6px;
+  height: 6px;
+  background: #9370db;
+  border-radius: 1.5px;
+}
+
+.abies-name-box .name-text {
+  font-weight: 800;
+  color: #2d3436;
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+[data-md-color-scheme="slate"] .abies-name-box {
+  background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  border-color: #9370db;
+  box-shadow: 0 2px 8px rgba(104, 211, 145, 0.2);
+}
+
+[data-md-color-scheme="slate"] .abies-name-box::before,
+[data-md-color-scheme="slate"] .abies-name-box::after,
+[data-md-color-scheme="slate"] .abies-name-box .corner-bl,
+[data-md-color-scheme="slate"] .abies-name-box .corner-br {
+  background: #9370db;
+}
+
+[data-md-color-scheme="slate"] .abies-name-box .name-text {
+  color: #f7fafc;
+}
+
+[data-md-color-scheme="slate"] .abies-header-motto {
+  color: #d0d0d0;
+}
+
+.abies-header-motto {
+  font-size: 1.2rem;
+  color: #757575;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 22px;
+  opacity: 0.92;
+}
+
+.abies-header-btns {
+  display: flex;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.abies-header-btns .md-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+}
+
+.abies-header-btns .md-button .twemoji {
+  display: inline-flex;
+  align-items: center;
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+.abies-header-btns .md-button .twemoji svg {
+  width: 100%;
+  height: 100%;
+}
+
+.dark-visible-text {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.mobile-motto {
+  display: none;
+  text-align: center;
+  padding: 15px 0;
+  margin: 5px 0;
+}
+
+.mobile-motto h1 {
+  font-size: 1.8rem;
+  color: #757575;
+  font-weight: 500;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .abies-header-row {
+    display: none !important;
+  }
+
+  .mobile-motto {
+    display: block;
+  }
+}

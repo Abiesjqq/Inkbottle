@@ -19,7 +19,7 @@ hide:
 <div class="abies-header-row">
   <!-- 左侧：文字内容 -->
   <div class="abies-header-text">
-    <div class="abies-header-title">Hi, I'm <span class="abies-name-box"><span class="name-text">Abies</span><span class="corner-bl"></span><span class="corner-br"></span></span></div>
+    <div class="abies-header-title">Hi, this is <span class="abies-name-box"><span class="name-text">Abies</span><span class="corner-bl"></span><span class="corner-br"></span></span></div>
     <div class="abies-header-subtitle">
       <span class="abies-header-subtitle-inner">
         <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>

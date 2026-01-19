@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://Abies_Inkbottle/</loc>
+         <lastmod>2026-01-19</lastmod>
+    </url>
+    <url>
+         <loc>https://Abies_Inkbottle/dir1/test10/</loc>
+         <lastmod>2026-01-19</lastmod>
+    </url>
+    <url>
+         <loc>https://Abies_Inkbottle/dir1/text11/</loc>
+         <lastmod>2026-01-19</lastmod>
+    </url>
+    <url>
+         <loc>https://Abies_Inkbottle/dir1/dir2/test20/</loc>
+         <lastmod>2026-01-19</lastmod>
+    </url>
+    <url>
+         <loc>https://Abies_Inkbottle/dir1/dir2/dir3/dir4/test40/</loc>
+         <lastmod>2026-01-19</lastmod>
+    </url>
+</urlset>

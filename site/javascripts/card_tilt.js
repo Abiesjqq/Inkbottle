@@ -936,8 +936,8 @@ function Ut(e, t, s) {
     --pointer-from-top: ${g.y / 100};
     --pointer-from-left: ${g.x / 100};
     --card-opacity: ${g.o};
-    --rotate-x: ${ie(w.x + a.x, -19.5, 19.5)}deg;
-    --rotate-y: ${ie(w.y + a.y, -19.5, 19.5)}deg;
+    --rotate-x: ${w.x + a.x}deg;
+    --rotate-y: ${w.y + a.y}deg;
     --background-x: ${f.x}%;
     --background-y: ${f.y}%;
     --card-scale: ${h};

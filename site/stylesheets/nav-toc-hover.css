@@ -1,0 +1,164 @@
+.md-sidebar.md-sidebar--primary,
+.md-sidebar.md-sidebar--secondary {
+    position: fixed;
+    /* top: 650px;
+    bottom: 40px; */
+    height: calc(100% - 31px);
+    min-height: calc(100% - 31px);
+    margin-top: 31px;
+    box-sizing: border-box;
+    z-index: 50;
+    pointer-events: auto;
+}
+
+[data-md-color-scheme="default"] {
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(0, 0, 0, 0.08);
+}
+
+[data-md-color-scheme="slate"] {
+    --glass-bg: rgba(20, 24, 28, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+.md-sidebar.md-sidebar--primary {
+    left: 0;
+}
+
+.md-sidebar.md-sidebar--secondary {
+    right: 0;
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__inner,
+.md-sidebar.md-sidebar--secondary .md-sidebar__inner {
+    height: calc(100% - 37px);
+    min-height: calc(100% - 37px);
+    margin-top: 37px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    overflow: hidden;
+    padding-top: 18px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border-color: var(--glass-border);
+    border-style: solid;
+    border-width: 0 1px;
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__inner {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition-delay: 0.3s;
+    pointer-events: none;
+}
+
+.md-sidebar.md-sidebar--secondary .md-sidebar__inner {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition-delay: 0.3s;
+    pointer-events: none;
+}
+
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap,
+.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap {
+    overflow-x: hidden;
+}
+
+.md-sidebar.md-sidebar--primary:hover .md-sidebar__inner,
+.md-sidebar.md-sidebar--primary .md-sidebar__scrollwrap:hover .md-sidebar__inner,
+.md-sidebar.md-sidebar--secondary:hover .md-sidebar__inner,
+.md-sidebar.md-sidebar--secondary .md-sidebar__scrollwrap:hover .md-sidebar__inner {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0s;
+    pointer-events: auto;
+}
+
+.md-sidebar .md-nav__title,
+.md-sidebar .md-nav__title--site,
+.md-sidebar .md-toc__title,
+.md-sidebar .md-sidebar__title {
+    background: transparent !important;
+    box-shadow: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+.md-sidebar .md-nav__title::before,
+.md-sidebar .md-nav__title::after,
+.md-sidebar .md-nav__title--site::before,
+.md-sidebar .md-nav__title--site::after {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.md-main__inner {
+    padding-left: 110px;
+    padding-right: 110px;
+}
+
+/* A: 如果方块变红，说明是 label 本体背景/阴影 */
+/* .md-sidebar--primary label.md-nav__title[for^="__nav_"] {
+  background: rgba(255,0,0,.35) !important;
+  box-shadow: 0 0 0 9999px rgba(255,0,0,.00) !important;
+} */
+
+/* B: 如果方块变红，说明是 label 的伪元素画的 */
+/* .md-sidebar--primary label.md-nav__title[for^="__nav_"]::before,
+.md-sidebar--primary label.md-nav__title[for^="__nav_"]::after {
+  background: rgba(255,0,0,.35) !important;
+} */
+
+/* C: 如果方块变红，说明是 label 里的第一个 span/图标容器画的（即便文字不在 span 里） */
+/* .md-sidebar--primary label.md-nav__title[for^="__nav_"] > span,
+.md-sidebar--primary label.md-nav__title[for^="__nav_"] > span::before,
+.md-sidebar--primary label.md-nav__title[for^="__nav_"] > span::after {
+  background: rgba(255,0,0,.35) !important;
+} */
+
+/* .md-sidebar--primary .md-nav__title {
+  outline: 2px solid red !important;
+} */
+
+/* DEBUG: force sidebar visible */
+/* .md-sidebar--primary .md-sidebar__inner,
+.md-sidebar--secondary .md-sidebar__inner{
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  pointer-events: auto !important;
+} */
+
+/* DEBUG: outline key containers */
+/* .md-sidebar--primary { outline: 2px solid lime !important; } */
+/* .md-sidebar--primary .md-sidebar__inner { outline: 2px solid cyan !important; }
+.md-sidebar--primary .md-nav { outline: 2px solid yellow !important; }
+.md-sidebar--primary .md-nav__title { outline: 2px solid red !important; }
+.md-sidebar--primary .md-nav__title > span { outline: 2px solid magenta !important; } */
+
+/* Remove the extra dark top strip drawn on the primary nav container */
+/* .md-sidebar--primary .md-nav.md-nav--primary {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+} */
+
+/* Many Material versions draw the strip via pseudo-elements on md-nav (esp. md-nav--lifted) */
+/* .md-sidebar--primary .md-nav.md-nav--primary::before,
+.md-sidebar--primary .md-nav.md-nav--primary::after,
+.md-sidebar--primary .md-nav.md-nav--primary.md-nav--lifted::before,
+.md-sidebar--primary .md-nav.md-nav--primary.md-nav--lifted::after {
+  content: none !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+} */
+
+/* Some versions apply a gradient to the list wrapper */
+/* .md-sidebar--primary .md-nav.md-nav--primary .md-nav__list {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+} */

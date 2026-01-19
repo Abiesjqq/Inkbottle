@@ -1,0 +1,10 @@
+:root {
+  --md-primary-fg-color: rgb(120, 81, 169);
+  --md-primary-fg-color--dark: rgb(120, 81, 169);
+  --md-primary-fg-color--light: rgb(152, 103, 197);
+}
+
+.md-header {
+  background-color: rgb(120, 81, 169);
+}
+
